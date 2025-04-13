@@ -1,4 +1,4 @@
-from typing import Sequence
+from typing import Sequence, List
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -23,7 +23,7 @@ class ProductModel(Base):
         lazy='noload'
     )
 
-    orders: Mapped[Sequence['OrderModel']] = relationship(
+    orders: Mapped[List['OrderModel']] = relationship(
         'OrderModel',
         secondary='products_in_orders',
         back_populates='products',
