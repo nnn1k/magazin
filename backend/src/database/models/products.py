@@ -10,5 +10,5 @@ class ProductModel(Base):
     name: Mapped[str]
     price: Mapped[float]
     category: Mapped[str]
-    image_url: Mapped[str] = mapped_column(default='')
-    description: Mapped[str] = mapped_column(default='')
+    image: Mapped[str] = mapped_column(default='', nullable=True)
+    description: Mapped[str] = mapped_column(default='', nullable=True)

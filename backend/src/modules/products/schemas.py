@@ -6,7 +6,7 @@ class ProductSchema(BaseModel):
     name: str
     price: float
     category: str
-    image_url: str
+    image: str
     description: str
 
     model_config = ConfigDict(from_attributes=True)
