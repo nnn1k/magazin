@@ -11,3 +11,4 @@ class UserService:
         user = await self.user_repo.get_user(**kwargs)
         return UserSchema.model_validate(user)
 
+

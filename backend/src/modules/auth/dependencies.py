@@ -55,3 +55,4 @@ async def get_user_by_token(
     if not user_id:
         raise invalid_token_exc
     return await service.get_user(id=int(user_id))
+

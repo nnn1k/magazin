@@ -1,11 +1,11 @@
 from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, EmailStr
 
 
 class UserSchema(BaseModel):
     id: int
-    email: str
+    email: EmailStr
     name: str
     photo_url: str
     is_admin: bool = False
