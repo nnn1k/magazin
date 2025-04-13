@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from backend.views.base import backend_router
-from frontend.routers.base import router as frontend_router
+from frontend.routers.routers import router as frontend_router
 app = FastAPI()
 
 app.include_router(backend_router)
