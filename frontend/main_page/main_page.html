@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЦПС - Онлайн магазин мерча</title>
+    <link rel="stylesheet" href="/frontend/main_page/main_page.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">ЦПС</a>
+            <ul class="nav-links">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">О нас</a></li>
+            </ul>
+            <button class="login-btn">Личный кабинет</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Официальный мерч ЦПС</h1>
+            <p>Качественная одежда и аксессуары с символикой компании ЦПС. Выделяйтесь из толпы вместе с нами!</p>
+            <a href="#" class="cta-btn">Смотреть каталог</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <h2 class="section-title">Популярные товары</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13-" alt="Футболка ЦПС" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Футболка ЦПС</h3>
+                    <p class="product-price">1 200 ₽</p>
+                    <button class="add-to-cart">В корзину</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13" alt="Худи ЦПС" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Худи ЦПС</h3>
+                    <p class="product-price">2 500 ₽</p>
+                    <button class="add-to-cart">В корзину</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13" alt="Кепка ЦПС" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Кепка ЦПС</h3>
+                    <p class="product-price">800 ₽</p>
+                    <button class="add-to-cart">В корзину</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13" alt="Термокружка ЦПС" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Термокружка ЦПС</h3>
+                    <p class="product-price">1 500 ₽</p>
+                    <button class="add-to-cart">В корзину</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-container">
+            <div class="about-img">
+                <img src="https://avatars.mds.yandex.net/i?id=72025c7fdd99f023ba15e62f96a2fd86_l-5467261-images-thumbs&n=13" alt="О компании ЦПС">
+            </div>
+            <div class="about-content">
+                <h2>О компании ЦПС</h2>
+                <p>ЦПС - ведущая компания Тверской области, специализирующаяся на предоставлении высококачественных услуг и продуктов для наших клиентов.</p>
+                <p>Наша миссия - делать жизнь людей лучше, предоставляя инновационные решения и продукты высочайшего качества. Мы гордимся нашей историей и стремимся к постоянному совершенствованию.</p>
+                <p>Теперь вы можете приобрести официальный мерч нашей компании и стать частью большой семьи ЦПС!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="#">О нас</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Категории</h3>
+                <ul>
+                    <li><a href="#">Одежда</a></li>
+                    <li><a href="#">Аксессуары</a></li>
+                    <li><a href="#">Сувениры</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>просп. Николая Корыткова, 3Г</li>
+                    <li>Телефон: +7 (4822) 44-32-44</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ЦПС. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Vanilla JavaScript for basic interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Login button functionality
+            const loginBtn = document.querySelector('.login-btn');
+            loginBtn.addEventListener('click', function() {
+                alert('Переход в личный кабинет');
+                // Here you would typically redirect to a login page
+            });
+
+            // Add to cart functionality
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.parentElement.querySelector('.product-title').textContent;
+                    alert(`Товар "${productName}" добавлен в корзину`);
+                });
+            });
+
+            // Subscribe form functionality
+            const subscribeForm = document.getElementById('subscribe-form');
+            if (subscribeForm) {
+                subscribeForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    if (emailInput && emailInput.value) {
+                        alert(`Спасибо! Вы подписались на рассылку с адресом: ${emailInput.value}`);
+                        emailInput.value = '';
+                    } else {
+                        alert('Пожалуйста, введите ваш email');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - ЦПС</title>
+    <link rel="stylesheet" href="/frontend/profile/profile.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">ЦПС</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+            <button class="login-btn">Личный кабинет</button>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="page-title-container">
+            <div class="title-content">
+                <h1>Личный кабинет</h1>
+                <p class="user-greeting">Добро пожаловать, Иван Петров!</p>
+            </div>
+            <div class="account-stats">
+                <div class="stat-item">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Заказов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">1250</div>
+                    <div class="stat-label">Бонусов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">В избранном</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Container -->
+    <div class="account-container">
+        <!-- Sidebar -->
+        <div class="account-sidebar">
+            <div class="user-card">
+                <div class="user-avatar">ИП</div>
+                <div class="user-info">
+                    <div class="user-name">Иван Петров</div>
+                    <div class="user-email">ivan.petrov@example.com</div>
+                    <div class="user-status">Постоянный клиент</div>
+                </div>
+            </div>
+
+            <div class="account-menu">
+                <div class="account-menu-item active" data-section="dashboard">
+                    <span class="menu-icon">📊</span>
+                    <span>Обзор</span>
+                </div>
+                <div class="account-menu-item" data-section="orders">
+                    <span class="menu-icon">📦</span>
+                    <span>Мои заказы</span>
+                </div>
+                <div class="account-menu-item" data-section="wishlist">
+                    <span class="menu-icon">❤️</span>
+                    <span>Избранное</span>
+                </div>
+                <div class="account-menu-item" data-section="addresses">
+                    <span class="menu-icon">📍</span>
+                    <span>Адреса</span>
+                </div>
+                <div class="account-menu-item" data-section="settings">
+                    <span class="menu-icon">⚙️</span>
+                    <span>Настройки</span>
+                </div>
+                <div class="account-menu-item">
+                    <span class="menu-icon">🚪</span>
+                    <span>Выйти</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="account-content">
+            <!-- Dashboard Section -->
+            <div class="content-section active" id="dashboard">
+                <div class="section-header">
+                    <h2 class="section-title">Обзор аккаунта</h2>
+                </div>
+
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <div class="card-icon">📦</div>
+                        <div class="card-title">Активные заказы</div>
+                        <div class="card-value">2</div>
+                        <div class="card-description">У вас 2 заказа в обработке</div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="card-icon">💰</div>
+                        <div class="card-title">Бонусные баллы</div>
+                        <div class="card-value">1250</div>
+                        <div class="card-description">Можно использовать при следующей покупке</div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="card-icon">🎁</div>
+                        <div class="card-title">Доступные купоны</div>
+                        <div class="card-value">3</div>
+                        <div class="card-description">У вас есть неиспользованные купоны</div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="card-icon">⭐</div>
+                        <div class="card-title">Статус клиента</div>
+                        <div class="card-value">Серебро</div>
+                        <div class="card-description">До "Золото" осталось 2 заказа</div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <div class="section-header">
+                        <h3 class="section-title">Недавняя активность</h3>
+                    </div>
+
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <div class="activity-icon">📦</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Заказ №12345 отправлен</div>
+                                <div class="activity-time">Сегодня, 10:23</div>
+                            </div>
+                        </li>
+
+                        <li class="activity-item">
+                            <div class="activity-icon">💰</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Начислено 250 бонусных баллов</div>
+                                <div class="activity-time">Вчера, 15:45</div>
+                            </div>
+                        </li>
+
+                        <li class="activity-item">
+                            <div class="activity-icon">❤️</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Добавлен товар в избранное</div>
+                                <div class="activity-time">3 дня назад</div>
+                            </div>
+                        </li>
+
+                        <li class="activity-item">
+                            <div class="activity-icon">📦</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Заказ №12344 доставлен</div>
+                                <div class="activity-time">5 дней назад</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Orders Section -->
+            <div class="content-section" id="orders">
+                <div class="section-header">
+                    <h2 class="section-title">Мои заказы</h2>
+                </div>
+
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <div class="order-number">Заказ №12345</div>
+                            <div class="order-date">15 апреля 2025</div>
+                        </div>
+                        <div class="order-status status-shipped">Отправлен</div>
+                    </div>
+
+                    <div class="order-items">
+                        <div class="order-item">
+                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Худи+ЦПС" alt="Худи ЦПС" class="item-image">
+                            <div class="item-details">
+                                <div class="item-name">Худи ЦПС классическое</div>
+                                <div class="item-price">2 500 ₽</div>
+                                <div class="item-quantity">Размер: L, Количество: 1</div>
+                            </div>
+                        </div>
+
+                        <div class="order-item">
+                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Футболка+ЦПС" alt="Футболка ЦПС" class="item-image">
+                            <div class="item-details">
+                                <div class="item-name">Футболка ЦПС базовая</div>
+                                <div class="item-price">1 200 ₽</div>
+                                <div class="item-quantity">Размер: M, Количество: 2</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-footer">
+                        <div class="order-total">Итого: <span class="order-total-value">4 900 ₽</span></div>
+                        <div class="order-actions">
+                            <button class="order-action-btn btn-primary">Отследить</button>
+                            <button class="order-action-btn btn-secondary">Детали заказа</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <div class="order-number">Заказ №12344</div>
+                            <div class="order-date">10 апреля 2025</div>
+                        </div>
+                        <div class="order-status status-delivered">Доставлен</div>
+                    </div>
+
+                    <div class="order-items">
+                        <div class="order-item">
+                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Кепка+ЦПС" alt="Кепка ЦПС" class="item-image">
+                            <div class="item-details">
+                                <div class="item-name">Кепка ЦПС</div>
+                                <div class="item-price">800 ₽</div>
+                                <div class="item-quantity">Количество: 1</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-footer">
+                        <div class="order-total">Итого: <span class="order-total-value">800 ₽</span></div>
+                        <div class="order-actions">
+                            <button class="order-action-btn btn-primary">Повторить заказ</button>
+                            <button class="order-action-btn btn-secondary">Оставить отзыв</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <div class="order-number">Заказ №12343</div>
+                            <div class="order-date">5 апреля 2025</div>
+                        </div>
+                        <div class="order-status status-delivered">Доставлен</div>
+                    </div>
+
+                    <div class="order-items">
+                        <div class="order-item">
+                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Штаны+ЦПС" alt="Штаны ЦПС" class="item-image">
+                            <div class="item-details">
+                                <div class="item-name">Штаны ЦПС спортивные</div>
+                                <div class="item-price">1 800 ₽</div>
+                                <div class="item-quantity">Размер: M, Количество: 1</div>
+                            </div>
+                        </div>
+
+                        <div class="order-item">
+                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Футболка+ЦПС" alt="Футболка ЦПС" class="item-image">
+                            <div class="item-details">
+                                <div class="item-name">Футболка ЦПС с принтом</div>
+                                <div class="item-price">1 500 ₽</div>
+                                <div class="item-quantity">Размер: M, Количество: 1</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-footer">
+                        <div class="order-total">Итого: <span class="order-total-value">3 300 ₽</span></div>
+                        <div class="order-actions">
+                            <button class="order-action-btn btn-primary">Повторить заказ</button>
+                            <button class="order-action-btn btn-secondary">Оставить отзыв</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <div class="pagination-item">«</div>
+                    <div class="pagination-item active">1</div>
+                    <div class="pagination-item">2</div>
+                    <div class="pagination-item">»</div>
+                </div>
+            </div>
+
+            <!-- Wishlist Section -->
+            <div class="content-section" id="wishlist">
+                <div class="section-header">
+                    <h2 class="section-title">Избранное</h2>
+                </div>
+
+                <div class="wishlist-grid">
+                    <div class="wishlist-item">
+                        <button class="remove-wishlist">×</button>
+                        <img src="https://via.placeholder.com/200x200/0056b3/ffffff?text=Куртка+ЦПС" alt="Куртка ЦПС" class="wishlist-image">
+                        <div class="wishlist-details">
+                            <div class="wishlist-name">Куртка ЦПС зимняя</div>
+                            <div class="wishlist-price">4 500 ₽</div>
+                            <div class="wishlist-actions">
+                                <button class="wishlist-btn btn-primary">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wishlist-item">
+                        <button class="remove-wishlist">×</button>
+                        <img src="https://via.placeholder.com/200x200/0056b3/ffffff?text=Худи+ЦПС" alt="Худи ЦПС" class="wishlist-image">
+                        <div class="wishlist-details">
+                            <div class="wishlist-name">Худи ЦПС оверсайз</div>
+                            <div class="wishlist-price">2 800 ₽</div>
+                            <div class="wishlist-actions">
+                                <button class="wishlist-btn btn-primary">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wishlist-item">
+                        <button class="remove-wishlist">×</button>
+                        <img src="https://via.placeholder.com/200x200/0056b3/ffffff?text=Кроссовки+ЦПС" alt="Кроссовки ЦПС" class="wishlist-image">
+                        <div class="wishlist-details">
+                            <div class="wishlist-name">Кроссовки ЦПС</div>
+                            <div class="wishlist-price">3 500 ₽</div>
+                            <div class="wishlist-actions">
+                                <button class="wishlist-btn btn-primary">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wishlist-item">
+                        <button class="remove-wishlist">×</button>
+                        <img src="https://via.placeholder.com/200x200/0056b3/ffffff?text=Футболка+ЦПС" alt="Футболка ЦПС" class="wishlist-image">
+                        <div class="wishlist-details">
+                            <div class="wishlist-name">Футболка ЦПС с принтом</div>
+                            <div class="wishlist-price">1 500 ₽</div>
+                            <div class="wishlist-actions">
+                                <button class="wishlist-btn btn-primary">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Addresses Section -->
+            <div class="content-section" id="addresses">
+                <div class="section-header">
+                    <h2 class="section-title">Мои адреса</h2>
+                    <button class="section-action" id="add-address-btn">Добавить адрес</button>
+                </div>
+
+                <div class="addresses-grid">
+                    <div class="address-card">
+                        <div class="address-type">Основной</div>
+                        <div class="address-name">Иван Петров</div>
+                        <div class="address-details">
+                            ул. Ленина, 123, кв. 45<br>
+                            г. Тверь, 170000<br>
+                            Россия<br>
+                            +7 (900) 123-45-67
+                        </div>
+                        <div class="address-actions">
+                            <button class="order-action-btn btn-secondary">Изменить</button>
+                            <button class="order-action-btn btn-secondary">Удалить</button>
+                        </div>
+                    </div>
+
+                    <div class="address-card">
+                        <div class="address-type">Рабочий</div>
+                        <div class="address-name">Иван Петров</div>
+                        <div class="address-details">
+                            ул. Советская, 45, офис 301<br>
+                            г. Тверь, 170001<br>
+                            Россия<br>
+                            +7 (900) 123-45-67
+                        </div>
+                        <div class="address-actions">
+                            <button class="order-action-btn btn-secondary">Изменить</button>
+                            <button class="order-action-btn btn-secondary">Удалить</button>
+                        </div>
+                    </div>
+
+                    <div class="add-address-card" id="add-address-card">
+                        <div class="add-icon">+</div>
+                        <div>Добавить новый адрес</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="content-section" id="settings">
+                <div class="section-header">
+                    <h2 class="section-title">Настройки аккаунта</h2>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h3>Личная информация</h3>
+                    </div>
+                    <div class="settings-body">
+                        <form id="personal-info-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">Имя</label>
+                                    <input type="text" id="first-name" class="form-control" value="Иван">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Фамилия</label>
+                                    <input type="text" id="last-name" class="form-control" value="Петров">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" class="form-control" value="ivan.petrov@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Телефон</label>
+                                    <input type="tel" id="phone" class="form-control" value="+7 (900) 123-45-67">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="birth-date">Дата рождения</label>
+                                    <input type="date" id="birth-date" class="form-control" value="1990-05-15">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">Пол</label>
+                                    <select id="gender" class="form-control">
+                                        <option value="male" selected>Мужской</option>
+                                        <option value="female">Женский</option>
+                                        <option value="other">Другой</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-footer">
+                                <button type="submit" class="order-action-btn btn-primary">Сохранить изменения</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h3>Изменить пароль</h3>
+                    </div>
+                    <div class="settings-body">
+                        <form id="change-password-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="current-password">Текущий пароль</label>
+                                    <input type="password" id="current-password" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="new-password">Новый пароль</label>
+                                    <input type="password" id="new-password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Подтвердите пароль</label>
+                                    <input type="password" id="confirm-password" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-footer">
+                                <button type="submit" class="order-action-btn btn-primary">Изменить пароль</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h3>Уведомления</h3>
+                    </div>
+                    <div class="settings-body">
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <div class="notification-title">Email-уведомления о заказах</div>
+                                <div class="notification-description">Получать уведомления о статусе заказов</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <div class="notification-title">SMS-уведомления</div>
+                                <div class="notification-description">Получать SMS о статусе заказов</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <div class="notification-title">Новости и акции</div>
+                                <div class="notification-description">Получать информацию о новинках и акциях</div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Address Modal -->
+    <div class="modal-overlay" id="add-address-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Добавить новый адрес</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-address-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="address-name">ФИО</label>
+                            <input type="text" id="address-name" class="form-control" placeholder="Введите ФИО получателя">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="address-phone">Телефон</label>
+                            <input type="tel" id="address-phone" class="form-control" placeholder="Введите номер телефона">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="address-street">Улица, дом, квартира</label>
+                            <input type="text" id="address-street" class="form-control" placeholder="Введите адрес">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="address-city">Город</label>
+                            <input type="text" id="address-city" class="form-control" placeholder="Введите город">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-zip">Индекс</label>
+                            <input type="text" id="address-zip" class="form-control" placeholder="Введите почтовый индекс">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="address-country">Страна</label>
+                            <select id="address-country" class="form-control">
+                                <option value="russia" selected>Россия</option>
+                                <option value="belarus">Беларусь</option>
+                                <option value="kazakhstan">Казахстан</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="address-default">
+                                <span class="checkbox-text">Сделать основным адресом</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="order-action-btn btn-secondary" id="cancel-address-btn">Отмена</button>
+                <button class="order-action-btn btn-primary" id="save-address-btn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#">Доставка и оплата</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Категории</h3>
+                <ul>
+                    <li><a href="catalog.html">Кофты</a></li>
+                    <li><a href="catalog.html">Футболки</a></li>
+                    <li><a href="catalog.html">Штаны</a></li>
+                    <li><a href="catalog.html">Обувь</a></li>
+                    <li><a href="catalog.html">Верхняя одежда</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>г. Тверь, ул. Примерная, 123</li>
+                    <li>Телефон: +7 (4822) 12-34-56</li>
+                    <li>Email: info@cps-tver.ru</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><span>VK</span></a>
+                    <a href="#"><span>TG</span></a>
+                    <a href="#"><span>OK</span></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Подписка</h3>
+                <p>Подпишитесь на нашу рассылку, чтобы первыми узнавать о новинках и акциях</p>
+                <form id="subscribe-form">
+                    <input type="email" placeholder="Ваш email" style="width: 100%; padding: 0.7rem; margin-top: 1rem; border: none; border-radius: 4px;">
+                    <button type="submit" style="width: 100%; background-color: #0077cc; color: white; border: none; padding: 0.7rem; margin-top: 0.5rem; border-radius: 4px; cursor: pointer;">Подписаться</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ЦПС. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const menuItems = document.querySelectorAll('.account-menu-item');
+        const contentSections = document.querySelectorAll('.content-section');
+        const addAddressBtn = document.getElementById('add-address-btn');
+        const addAddressCard = document.getElementById('add-address-card');
+        const addAddressModal = document.getElementById('add-address-modal');
+        const modalClose = document.querySelector('.modal-close');
+        const cancelAddressBtn = document.getElementById('cancel-address-btn');
+        const saveAddressBtn = document.getElementById('save-address-btn');
+        const removeWishlistBtns = document.querySelectorAll('.remove-wishlist');
+        const personalInfoForm = document.getElementById('personal-info-form');
+        const changePasswordForm = document.getElementById('change-password-form');
+
+        // Menu navigation
+        menuItems.forEach(item => {
+            if (item.dataset.section) {
+                item.addEventListener('click', () => {
+                    // Remove active class from all menu items and content sections
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    contentSections.forEach(s => s.classList.remove('active'));
+
+                    // Add active class to clicked menu item and corresponding content section
+                    item.classList.add('active');
+                    document.getElementById(item.dataset.section).classList.add('active');
+                });
+            }
+        });
+
+        // Add address modal
+        function openAddressModal() {
+            addAddressModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAddressModal() {
+            addAddressModal.classList.remove('active');
+            addAddressModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Open modal when clicking "Add address" button or card
+        addAddressBtn.addEventListener('click', openAddressModal);
+        addAddressCard.addEventListener('click', openAddressModal);
+
+        // Close modal
+        modalClose.addEventListener('click', closeAddressModal);
+        cancelAddressBtn.addEventListener('click', closeAddressModal);
+
+        // Close modal when clicking outside
+        addAddressModal.addEventListener('click', (e) => {
+            if (e.target === addAddressModal) {
+                closeAddressModal();
+            }
+        });
+
+        // Save address
+        saveAddressBtn.addEventListener('click', () => {
+            // Here you would typically validate the form and save the address
+            // For demo purposes, we'll just close the modal
+            alert('Адрес успешно добавлен');
+            closeAddressModal();
+        });
+
+        // Remove wishlist item
+        removeWishlistBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const wishlistItem = btn.closest('.wishlist-item');
+
+                if (confirm('Вы уверены, что хотите удалить этот товар из избранного?')) {
+                    wishlistItem.style.opacity = '0';
+                    setTimeout(() => {
+                        wishlistItem.remove();
+                    }, 300);
+                }
+            });
+        });
+
+        // Personal info form
+        personalInfoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Личная информация успешно обновлена');
+        });
+
+        // Change password form
+        changePasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (newPassword !== confirmPassword) {
+                alert('Пароли не совпадают');
+                return;
+            }
+
+            alert('Пароль успешно изменен');
+            changePasswordForm.reset();
+        });
+
+        // Add to cart from wishlist
+        const addToCartBtns = document.querySelectorAll('.wishlist-btn');
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const wishlistItem = btn.closest('.wishlist-item');
+                const productName = wishlistItem.querySelector('.wishlist-name').textContent;
+
+                alert(`Товар "${productName}" добавлен в корзину`);
+            });
+        });
+
+        // Order action buttons
+        const orderActionBtns = document.querySelectorAll('.order-action-btn');
+        orderActionBtns.forEach(btn => {
+            if (btn.textContent === 'Детали заказа') {
+                btn.addEventListener('click', () => {
+                    const orderNumber = btn.closest('.order-card').querySelector('.order-number').textContent;
+                    alert(`Просмотр деталей заказа ${orderNumber}`);
+                });
+            } else if (btn.textContent === 'Отследить') {
+                btn.addEventListener('click', () => {
+                    const orderNumber = btn.closest('.order-card').querySelector('.order-number').textContent;
+                    alert(`Отслеживание заказа ${orderNumber}`);
+                });
+            } else if (btn.textContent === 'Повторить заказ') {
+                btn.addEventListener('click', () => {
+                    const orderNumber = btn.closest('.order-card').querySelector('.order-number').textContent;
+                    alert(`Повторение заказа ${orderNumber}`);
+                });
+            } else if (btn.textContent === 'Оставить отзыв') {
+                btn.addEventListener('click', () => {
+                    const orderNumber = btn.closest('.order-card').querySelector('.order-number').textContent;
+                    alert(`Оставить отзыв о заказе ${orderNumber}`);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

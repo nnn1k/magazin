@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров - ЦПС</title>
+    <link rel="stylesheet" href="/frontend/catalog_page/catalog_page.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">ЦПС</a>
+            <ul class="nav-links">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">О нас</a></li>
+            </ul>
+            <button class="login-btn">Личный кабинет</button>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Каталог товаров</h1>
+        <p>Выберите категорию или воспользуйтесь поиском</p>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="category-icons">
+            <div class="category-item" data-category="hoodies">
+                <div class="category-icon">👕</div>
+                <div class="category-name">Кофты</div>
+            </div>
+            <div class="category-item" data-category="tshirts">
+                <div class="category-icon">👔</div>
+                <div class="category-name">Футболки</div>
+            </div>
+            <div class="category-item" data-category="pants">
+                <div class="category-icon">👖</div>
+                <div class="category-name">Штаны</div>
+            </div>
+            <div class="category-item" data-category="shoes">
+                <div class="category-icon">👟</div>
+                <div class="category-name">Обувь</div>
+            </div>
+            <div class="category-item" data-category="outerwear">
+                <div class="category-icon">🧥</div>
+                <div class="category-name">Верхняя одежда</div>
+            </div>
+            <div class="category-item" data-category="accessories">
+                <div class="category-icon">🧢</div>
+                <div class="category-name">Аксессуары</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog -->
+    <section class="catalog-container">
+        <div class="filter-bar">
+            <div class="filter-options">
+                <select class="filter-select" id="sort-by">
+                    <option value="popular">По популярности</option>
+                    <option value="price-asc">По возрастанию цены</option>
+                    <option value="price-desc">По убыванию цены</option>
+                    <option value="new">Новинки</option>
+                </select>
+                <select class="filter-select" id="filter-price">
+                    <option value="all">Все цены</option>
+                    <option value="0-1000">До 1 000 ₽</option>
+                    <option value="1000-2000">1 000 - 2 000 ₽</option>
+                    <option value="2000-3000">2 000 - 3 000 ₽</option>
+                    <option value="3000+">От 3 000 ₽</option>
+                </select>
+            </div>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Поиск товаров...">
+                <button class="search-btn">Найти</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="products-container">
+            <!-- Products will be dynamically generated here -->
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Детали товара</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="/placeholder.svg" alt="Product Image" id="modal-product-image">
+                </div>
+                <div class="modal-details">
+                    <h2 class="modal-title" id="modal-product-title"></h2>
+                    <div class="modal-price" id="modal-product-price"></div>
+                    <p class="modal-description" id="modal-product-description"></p>
+
+                    <div class="size-selector">
+                        <h4>Размер:</h4>
+                        <div class="size-options">
+                            <div class="size-option">XS</div>
+                            <div class="size-option">S</div>
+                            <div class="size-option selected">M</div>
+                            <div class="size-option">L</div>
+                            <div class="size-option">XL</div>
+                            <div class="size-option">XXL</div>
+                        </div>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <h4>Количество:</h4>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" id="decrease-quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="10" id="quantity-input">
+                            <button class="quantity-btn" id="increase-quantity">+</button>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="buy-now-btn">Купить сейчас</button>
+                        <button class="add-to-cart-btn">Добавить в корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="#">О нас</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Категории</h3>
+                <ul>
+                    <li><a href="#">Одежда</a></li>
+                    <li><a href="#">Аксессуары</a></li>
+                    <li><a href="#">Сувениры</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>просп. Николая Корыткова, 3Г</li>
+                    <li>Телефон: +7 (4822) 44-32-44</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ЦПС. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: 'Худи ЦПС классическое',
+                price: 2500,
+                category: 'hoodies',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.8,
+                reviews: 124,
+                description: 'Классическое худи с логотипом ЦПС. Изготовлено из высококачественного хлопка, обеспечивает комфорт и тепло. Идеально подходит для повседневной носки.'
+            },
+            {
+                id: 2,
+                name: 'Футболка ЦПС базовая',
+                price: 1200,
+                category: 'tshirts',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.6,
+                reviews: 89,
+                description: 'Базовая футболка с логотипом ЦПС. Изготовлена из 100% хлопка, приятная к телу. Подходит для повседневной носки и занятий спортом.'
+            },
+            {
+                id: 3,
+                name: 'Штаны ЦПС спортивные',
+                price: 1800,
+                category: 'pants',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.5,
+                reviews: 67,
+                description: 'Спортивные штаны с логотипом ЦПС. Удобные и практичные, с карманами на молнии. Идеально подходят для занятий спортом и повседневной носки.'
+            },
+            {
+                id: 4,
+                name: 'Кроссовки ЦПС',
+                price: 3500,
+                category: 'shoes',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.9,
+                reviews: 42,
+                description: 'Стильные и удобные кроссовки с логотипом ЦПС. Легкие и практичные, подходят для повседневной носки и занятий спортом.'
+            },
+            {
+                id: 5,
+                name: 'Куртка ЦПС зимняя',
+                price: 4500,
+                category: 'outerwear',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.7,
+                reviews: 35,
+                description: 'Зимняя куртка с логотипом ЦПС. Теплая и практичная, с капюшоном и множеством карманов. Идеально подходит для холодной погоды.'
+            },
+            {
+                id: 6,
+                name: 'Кепка ЦПС',
+                price: 800,
+                category: 'accessories',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.4,
+                reviews: 56,
+                description: 'Стильная кепка с логотипом ЦПС. Регулируемый размер, подходит для повседневной носки.'
+            },
+            {
+                id: 7,
+                name: 'Худи ЦПС оверсайз',
+                price: 2800,
+                category: 'hoodies',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.9,
+                reviews: 78,
+                description: 'Худи оверсайз с логотипом ЦПС. Свободный крой, удобные карманы. Идеально подходит для создания модного образа.'
+            },
+            {
+                id: 8,
+                name: 'Футболка ЦПС с принтом',
+                price: 1500,
+                category: 'tshirts',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.7,
+                reviews: 62,
+                description: 'Футболка с уникальным принтом ЦПС. Изготовлена из высококачественного хлопка, приятная к телу. Яркий дизайн выделит вас из толпы.'
+            },
+            {
+                id: 9,
+                name: 'Джинсы ЦПС',
+                price: 2200,
+                category: 'pants',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.6,
+                reviews: 45,
+                description: 'Стильные джинсы с логотипом ЦПС. Удобный крой, высококачественный деним. Подходят для повседневной носки.'
+            },
+            {
+                id: 10,
+                name: 'Ботинки ЦПС',
+                price: 3800,
+                category: 'shoes',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.8,
+                reviews: 38,
+                description: 'Стильные и прочные ботинки с логотипом ЦПС. Идеально подходят для холодной погоды и повседневной носки.'
+            },
+            {
+                id: 11,
+                name: 'Ветровка ЦПС',
+                price: 2900,
+                category: 'outerwear',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.5,
+                reviews: 29,
+                description: 'Легкая ветровка с логотипом ЦПС. Защищает от ветра и дождя, имеет удобный капюшон и карманы.'
+            },
+            {
+                id: 12,
+                name: 'Шапка ЦПС',
+                price: 700,
+                category: 'accessories',
+                image: 'https://avatars.mds.yandex.net/i?id=dab24e0637f6b9a95fe660866f195b490be36dce-6177852-images-thumbs&n=13',
+                rating: 4.3,
+                reviews: 51,
+                description: 'Теплая шапка с логотипом ЦПС. Изготовлена из мягкой пряжи, сохраняет тепло в холодную погоду.'
+            }
+        ];
+
+        // DOM elements
+        const productsContainer = document.getElementById('products-container');
+        const modal = document.getElementById('product-modal');
+        const modalClose = document.querySelector('.modal-close');
+        const modalProductImage = document.getElementById('modal-product-image');
+        const modalProductTitle = document.getElementById('modal-product-title');
+        const modalProductPrice = document.getElementById('modal-product-price');
+        const modalProductDescription = document.getElementById('modal-product-description');
+        const categoryItems = document.querySelectorAll('.category-item');
+        const quantityInput = document.getElementById('quantity-input');
+        const decreaseQuantityBtn = document.getElementById('decrease-quantity');
+        const increaseQuantityBtn = document.getElementById('increase-quantity');
+        const sizeOptions = document.querySelectorAll('.size-option');
+        const buyNowBtn = document.querySelector('.buy-now-btn');
+        const addToCartBtn = document.querySelector('.add-to-cart-btn');
+        const searchInput = document.querySelector('.search-input');
+        const searchBtn = document.querySelector('.search-btn');
+        const sortBySelect = document.getElementById('sort-by');
+        const filterPriceSelect = document.getElementById('filter-price');
+
+        // Current filter state
+        let currentCategory = 'all';
+        let currentSearch = '';
+        let currentSort = 'popular';
+        let currentPriceFilter = 'all';
+
+        // Render products
+        function renderProducts() {
+            // Filter products
+            let filteredProducts = products;
+
+            // Filter by category
+            if (currentCategory !== 'all') {
+                filteredProducts = filteredProducts.filter(product => product.category === currentCategory);
+            }
+
+            // Filter by search
+            if (currentSearch) {
+                const searchLower = currentSearch.toLowerCase();
+                filteredProducts = filteredProducts.filter(product =>
+                    product.name.toLowerCase().includes(searchLower) ||
+                    product.description.toLowerCase().includes(searchLower)
+                );
+            }
+
+            // Filter by price
+            if (currentPriceFilter !== 'all') {
+                const [min, max] = currentPriceFilter.split('-');
+                if (max) {
+                    filteredProducts = filteredProducts.filter(product =>
+                        product.price >= parseInt(min) && product.price <= parseInt(max)
+                    );
+                } else {
+                    // For "3000+" case
+                    const minPrice = parseInt(min.replace('+', ''));
+                    filteredProducts = filteredProducts.filter(product => product.price >= minPrice);
+                }
+            }
+
+            // Sort products
+            switch (currentSort) {
+                case 'price-asc':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'new':
+                    // For demo, we'll just reverse the array to simulate "newest first"
+                    filteredProducts.reverse();
+                    break;
+                case 'popular':
+                default:
+                    filteredProducts.sort((a, b) => b.rating - a.rating);
+                    break;
+            }
+
+            // Clear container
+            productsContainer.innerHTML = '';
+
+            // Add products
+            if (filteredProducts.length === 0) {
+                productsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; padding: 2rem;">Товары не найдены. Попробуйте изменить параметры поиска.</p>';
+                return;
+            }
+
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.dataset.id = product.id;
+
+                // Generate stars HTML
+                const starsHTML = generateStarsHTML(product.rating);
+
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-price">${product.price} ₽</p>
+                        <div class="product-rating">
+                            <div class="stars">${starsHTML}</div>
+                            <span class="reviews-count">(${product.reviews})</span>
+                        </div>
+                    </div>
+                `;
+
+                productsContainer.appendChild(productCard);
+
+                // Add click event to open modal
+                productCard.addEventListener('click', () => {
+                    openProductModal(product);
+                });
+            });
+        }
+
+        // Generate stars HTML based on rating
+        function generateStarsHTML(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.5;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+            let starsHTML = '';
+
+            // Full stars
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += '★';
+            }
+
+            // Half star
+            if (halfStar) {
+                starsHTML += '★';
+            }
+
+            // Empty stars
+            for (let i = 0; i < emptyStars; i++) {
+                starsHTML += '☆';
+            }
+
+            return starsHTML;
+        }
+
+        // Open product modal
+        function openProductModal(product) {
+            modalProductImage.src = product.image;
+            modalProductImage.alt = product.name;
+            modalProductTitle.textContent = product.name;
+            modalProductPrice.textContent = `${product.price} ₽`;
+            modalProductDescription.textContent = product.description;
+
+            // Reset quantity
+            quantityInput.value = 1;
+
+            // Show modal
+            modal.classList.add('active');
+
+            // Prevent body scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close product modal
+        function closeProductModal() {
+            modal.classList.remove('active');
+
+            // Allow body scrolling
+            document.body.style.overflow = '';
+        }
+
+        // Initialize
+        function init() {
+            // Render all products initially
+            renderProducts();
+
+            // Category filter
+            categoryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Remove active class from all categories
+                    categoryItems.forEach(cat => cat.classList.remove('active'));
+
+                    // Add active class to clicked category
+                    item.classList.add('active');
+
+                    // Update current category
+                    currentCategory = item.dataset.category;
+
+                    // Re-render products
+                    renderProducts();
+                });
+            });
+
+            // Modal close button
+            modalClose.addEventListener('click', closeProductModal);
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeProductModal();
+                }
+            });
+
+            // Quantity controls
+            decreaseQuantityBtn.addEventListener('click', () => {
+                const currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+
+            increaseQuantityBtn.addEventListener('click', () => {
+                const currentValue = parseInt(quantityInput.value);
+                if (currentValue < 10) {
+                    quantityInput.value = currentValue + 1;
+                }
+            });
+
+            // Size selection
+            sizeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove selected class from all options
+                    sizeOptions.forEach(opt => opt.classList.remove('selected'));
+
+                    // Add selected class to clicked option
+                    option.classList.add('selected');
+                });
+            });
+
+            // Buy now button
+            buyNowBtn.addEventListener('click', () => {
+                const quantity = parseInt(quantityInput.value);
+                const size = document.querySelector('.size-option.selected').textContent;
+                const productName = modalProductTitle.textContent;
+
+                alert(`Оформление заказа:\n${productName}\nРазмер: ${size}\nКоличество: ${quantity}`);
+                closeProductModal();
+            });
+
+            // Add to cart button
+            addToCartBtn.addEventListener('click', () => {
+                const quantity = parseInt(quantityInput.value);
+                const size = document.querySelector('.size-option.selected').textContent;
+                const productName = modalProductTitle.textContent;
+
+                alert(`Товар добавлен в корзину:\n${productName}\nРазмер: ${size}\nКоличество: ${quantity}`);
+                closeProductModal();
+            });
+
+            // Search
+            searchBtn.addEventListener('click', () => {
+                currentSearch = searchInput.value.trim();
+                renderProducts();
+            });
+
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    currentSearch = searchInput.value.trim();
+                    renderProducts();
+                }
+            });
+
+            // Sort
+            sortBySelect.addEventListener('change', () => {
+                currentSort = sortBySelect.value;
+                renderProducts();
+            });
+
+            // Price filter
+            filterPriceSelect.addEventListener('change', () => {
+                currentPriceFilter = filterPriceSelect.value;
+                renderProducts();
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
