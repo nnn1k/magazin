@@ -164,8 +164,6 @@
     </footer>
 
     <script>
-
-        // DOM elements
         const productsContainer = document.getElementById('products-container');
         const modal = document.getElementById('product-modal');
         const modalClose = document.querySelector('.modal-close');
@@ -185,15 +183,16 @@
         const sortBySelect = document.getElementById('sort-by');
         const filterPriceSelect = document.getElementById('filter-price');
 
-        // Current filter state
         let currentCategory = 'all';
         let currentSearch = '';
         let currentSort = 'popular';
         let currentPriceFilter = 'all';
+        let productId = 0
 
 
         // Open product modal
         function openProductModal(product) {
+            productId = product.id
             modalProductImage.src = product.image;
             modalProductImage.alt = product.name;
             modalProductTitle.textContent = product.name;

@@ -168,9 +168,16 @@ function init() {
         const quantity = parseInt(quantityInput.value);
         const size = document.querySelector('.size-option.selected').textContent;
         const productName = modalProductTitle.textContent;
+        const id = productId
 
-        alert(`Товар добавлен в корзину:\n${productName}\nРазмер: ${size}\nКоличество: ${quantity}`);
-        closeProductModal();
+        const postResponse = makeRequest({
+            method: 'POST',
+            url: `/api/carts/${id}?size=${size}&count=${quantity}`,
+        })
+        if (postResponse){
+            console.log('ok')
+            closeProductModal();
+        }
     });
 
     // Search
