@@ -12,3 +12,5 @@ class ProductModel(Base):
     category: Mapped[str]
     image: Mapped[str] = mapped_column(default='', nullable=True)
     description: Mapped[str] = mapped_column(default='', nullable=True)
+    created_at: Mapped[created_at]
+    updated_at: Mapped[updated_at]
