@@ -7,21 +7,18 @@
     <link rel="stylesheet" href="/frontend/profile/profile.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-container">
-            <a href="index.html" class="logo">ЦПС</a>
+            <a href="http://127.0.0.1:8000" class="logo">ЦПС</a>
             <ul class="nav-links">
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="#">О нас</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="http://127.0.0.1:8000">Главная</a></li>
+                <li><a href="http://127.0.0.1:8000/catalog">Каталог</a></li>
+                <li><a href="http://127.0.0.1:8000/catalog">О нас</a></li>
             </ul>
-            <button class="login-btn">Личный кабинет</button>
+            <a href="http://127.0.0.1:8000/profile" type="button" class="login-btn">Личный кабинет</a>
         </div>
     </header>
 
-    <!-- Page Title -->
     <section class="page-title">
         <div class="page-title-container">
             <div class="title-content">
@@ -81,7 +78,7 @@
                 </div>
                 <div class="account-menu-item">
                     <span class="menu-icon">🚪</span>
-                    <span>Выйти</span>
+                    <span onclick="logout()">Выйти</span>
                 </div>
             </div>
         </div>
@@ -587,53 +584,35 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Навигация</h3>
-                <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="catalog.html">Каталог</a></li>
-                    <li><a href="#">О нас</a></li>
-                    <li><a href="#">Контакты</a></li>
-                    <li><a href="#">Доставка и оплата</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Категории</h3>
-                <ul>
-                    <li><a href="catalog.html">Кофты</a></li>
-                    <li><a href="catalog.html">Футболки</a></li>
-                    <li><a href="catalog.html">Штаны</a></li>
-                    <li><a href="catalog.html">Обувь</a></li>
-                    <li><a href="catalog.html">Верхняя одежда</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Контакты</h3>
-                <ul>
-                    <li>г. Тверь, ул. Примерная, 123</li>
-                    <li>Телефон: +7 (4822) 12-34-56</li>
-                    <li>Email: info@cps-tver.ru</li>
-                </ul>
-                <div class="social-links">
-                    <a href="#"><span>VK</span></a>
-                    <a href="#"><span>TG</span></a>
-                    <a href="#"><span>OK</span></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h3>Подписка</h3>
-                <p>Подпишитесь на нашу рассылку, чтобы первыми узнавать о новинках и акциях</p>
-                <form id="subscribe-form">
-                    <input type="email" placeholder="Ваш email" style="width: 100%; padding: 0.7rem; margin-top: 1rem; border: none; border-radius: 4px;">
-                    <button type="submit" style="width: 100%; background-color: #0077cc; color: white; border: none; padding: 0.7rem; margin-top: 0.5rem; border-radius: 4px; cursor: pointer;">Подписаться</button>
-                </form>
-            </div>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Навигация</h3>
+            <ul>
+                <li><a href="http://127.0.0.1:8000">Главная</a></li>
+                <li><a href="http://127.0.0.1:8000/catalog">Каталог</a></li>
+                <li><a href="http://127.0.0.1:8000/catalog">О нас</a></li>
+            </ul>
         </div>
-        <div class="copyright">
-            <p>&copy; 2025 ЦПС. Все права защищены.</p>
+        <div class="footer-col">
+            <h3>Категории</h3>
+            <ul>
+                <li><a href="#">Одежда</a></li>
+                <li><a href="#">Аксессуары</a></li>
+                <li><a href="#">Сувениры</a></li>
+            </ul>
         </div>
-    </footer>
+        <div class="footer-col">
+            <h3>Контакты</h3>
+            <ul>
+                <li>просп. Николая Корыткова, 3Г</li>
+                <li>Телефон: +7 (4822) 44-32-44</li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2025 ЦПС. Все права защищены.</p>
+    </div>
+</footer>
 
     <script>
         // DOM Elements
@@ -773,5 +752,6 @@
             }
         });
     </script>
+<script type="module" src="/frontend/profile/profile.js"></script>
 </body>
 </html>
