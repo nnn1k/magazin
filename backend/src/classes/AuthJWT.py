@@ -1,4 +1,4 @@
-from datetime import timedelta, datetime, UTC
+from datetime import timedelta, datetime
 from pathlib import Path
 from typing import Dict
 
@@ -31,7 +31,7 @@ class AuthJWT:
     ) -> str:
         private_key = self.private_key_path.read_text()
         to_encode = payload.copy()
-        now = datetime.now(UTC)
+        now = datetime.utcnow()
         if expire_timedelta:
             expire = now + expire_timedelta
         else:
