@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация - ЦПС</title>
+    <link rel="stylesheet" href="/frontend/auth/auth.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">ЦПС</a>
+            <ul class="nav-links">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">О нас</a></li>
+            </ul>
+            <button class="login-btn">Личный кабинет</button>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Личный кабинет</h1>
+        <p>Войдите в аккаунт или зарегистрируйтесь</p>
+    </section>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+        <!-- Auth Box -->
+        <div class="auth-box">
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-tab="login">Вход</div>
+                <div class="auth-tab" data-tab="register">Регистрация</div>
+            </div>
+
+            <!-- Login Form -->
+            <form class="auth-form active" id="login-form">
+                <div class="success-message" id="login-success">
+                    Вы успешно вошли в аккаунт!
+                </div>
+
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="Введите ваш email">
+                    <div class="error-message" id="login-email-error">Пожалуйста, введите корректный email</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Пароль</label>
+                    <div class="password-container">
+                        <input type="password" id="login-password" class="form-control" placeholder="Введите ваш пароль">
+                        <button type="button" class="toggle-password" data-target="login-password">👁️</button>
+                    </div>
+                    <div class="error-message" id="login-password-error">Пароль должен содержать минимум 6 символов</div>
+                </div>
+
+
+                <button type="submit" class="auth-btn" id="login-btn">Войти</button>
+
+            </form>
+
+            <!-- Register Form -->
+            <form class="auth-form" id="register-form">
+                <div class="success-message" id="register-success">
+                    Вы успешно зарегистрировались! Теперь вы можете войти в свой аккаунт.
+                </div>
+
+                <div class="form-group">
+                    <label for="register-name">Имя</label>
+                    <input type="text" id="register-name" class="form-control" placeholder="Введите ваше имя">
+                    <div class="error-message" id="register-name-error">Пожалуйста, введите ваше имя</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" class="form-control" placeholder="Введите ваш email">
+                    <div class="error-message" id="register-email-error">Пожалуйста, введите корректный email</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-password">Пароль</label>
+                    <div class="password-container">
+                        <input type="password" id="register-password" class="form-control" placeholder="Придумайте пароль">
+                        <button type="button" class="toggle-password" data-target="register-password">👁️</button>
+                    </div>
+                    <div class="error-message" id="register-password-error">Пароль должен содержать минимум 6 символов, включая цифры и буквы</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-confirm-password">Подтверждение пароля</label>
+                    <div class="password-container">
+                        <input type="password" id="register-confirm-password" class="form-control" placeholder="Повторите пароль">
+                        <button type="button" class="toggle-password" data-target="register-confirm-password">👁️</button>
+                    </div>
+                    <div class="error-message" id="register-confirm-password-error">Пароли не совпадают</div>
+                </div>
+
+                <button type="submit" class="auth-btn" id="register-btn">Зарегистрироваться</button>
+            </form>
+        </div>
+
+        <!-- Benefits -->
+    </div>
+
+    <!-- Reset Password Modal -->
+    <div class="modal-overlay" id="reset-password-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Восстановление пароля</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-message" id="reset-success">
+                    Инструкции по восстановлению пароля отправлены на ваш email
+                </div>
+
+                <p>Введите ваш email, и мы отправим вам инструкции по восстановлению пароля</p>
+
+                <div class="form-group">
+                    <label for="reset-email">Email</label>
+                    <input type="email" id="reset-email" class="form-control" placeholder="Введите ваш email">
+                    <div class="error-message" id="reset-email-error">Пожалуйста, введите корректный email</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="auth-btn" id="reset-btn">Отправить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="#">О нас</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Категории</h3>
+                <ul>
+                    <li><a href="#">Одежда</a></li>
+                    <li><a href="#">Аксессуары</a></li>
+                    <li><a href="#">Сувениры</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>просп. Николая Корыткова, 3Г</li>
+                    <li>Телефон: +7 (4822) 44-32-44</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ЦПС. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const authForms = document.querySelectorAll('.auth-form');
+        const togglePasswordBtns = document.querySelectorAll('.toggle-password');
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        const resetPasswordModal = document.getElementById('reset-password-modal');
+        const modalClose = document.querySelector('.modal-close');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const resetBtn = document.getElementById('reset-btn');
+        const loginSuccess = document.getElementById('login-success');
+        const registerSuccess = document.getElementById('register-success');
+        const resetSuccess = document.getElementById('reset-success');
+        const termsAgree = document.getElementById('terms-agree');
+        const registerBtn = document.getElementById('register-btn');
+
+        // Tab switching
+        authTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and forms
+                authTabs.forEach(t => t.classList.remove('active'));
+                authForms.forEach(f => f.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding form
+                tab.classList.add('active');
+                const formId = tab.dataset.tab + '-form';
+                document.getElementById(formId).classList.add('active');
+
+                // Hide success messages when switching tabs
+                loginSuccess.classList.remove('visible');
+                registerSuccess.classList.remove('visible');
+            });
+        });
+
+        // Toggle password visibility
+        togglePasswordBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.target;
+                const passwordInput = document.getElementById(targetId);
+
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    btn.textContent = '🔒';
+                } else {
+                    passwordInput.type = 'password';
+                    btn.textContent = '👁️';
+                }
+            });
+        });
+
+        // Forgot password modal
+        forgotPasswordLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            resetPasswordModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            resetSuccess.classList.remove('visible');
+            document.getElementById('reset-email').value = '';
+            document.getElementById('reset-email-error').classList.remove('visible');
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            resetPasswordModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close modal when clicking outside
+        resetPasswordModal.addEventListener('click', (e) => {
+            if (e.target === resetPasswordModal) {
+                resetPasswordModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Form validation functions
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePassword(password) {
+            return password.length >= 6;
+        }
+
+        function validateName(name) {
+            return name.trim().length > 0;
+        }
+
+        function validatePasswordStrength(password) {
+            // Password should be at least 6 characters and contain both letters and numbers
+            const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+            return re.test(password);
+        }
+
+        // Login form validation
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            let isValid = true;
+
+            // Validate email
+            if (!validateEmail(email)) {
+                document.getElementById('login-email').classList.add('error');
+                document.getElementById('login-email-error').classList.add('visible');
+                isValid = false;
+            } else {
+                document.getElementById('login-email').classList.remove('error');
+                document.getElementById('login-email-error').classList.remove('visible');
+            }
+
+            // Validate password
+            if (!validatePassword(password)) {
+                document.getElementById('login-password').classList.add('error');
+                document.getElementById('login-password-error').classList.add('visible');
+                isValid = false;
+            } else {
+                document.getElementById('login-password').classList.remove('error');
+                document.getElementById('login-password-error').classList.remove('visible');
+            }
+
+            // If form is valid, submit
+            if (isValid) {
+                // Here you would typically send the data to your server
+                // For demo purposes, we'll just show a success message
+                loginSuccess.classList.add('visible');
+                loginForm.reset();
+            }
+        });
+
+        // Register form validation
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            let isValid = true;
+
+            // Validate name
+            if (!validateName(name)) {
+                document.getElementById('register-name').classList.add('error');
+                document.getElementById('register-name-error').classList.add('visible');
+                isValid = false;
+            } else {
+                document.getElementById('register-name').classList.remove('error');
+                document.getElementById('register-name-error').classList.remove('visible');
+            }
+
+            // Validate email
+            if (!validateEmail(email)) {
+                document.getElementById('register-email').classList.add('error');
+                document.getElementById('register-email-error').classList.add('visible');
+                isValid = false;
+            } else {
+                document.getElementById('register-email').classList.remove('error');
+                document.getElementById('register-email-error').classList.remove('visible');
+            }
+
+            // Validate password
+            if (!validatePasswordStrength(password)) {
+                document.getElementById('register-password').classList.add('error');
+                document.getElementById('register-password-error').classList.add('visible');
+                isValid = false;
+            } else {
+                document.getElementById('register-password').classList.remove('error');
+                document.getElementById('register-password-error').classList.remove('visible');
+            }
+
+            // Validate confirm password
+            if (password !== confirmPassword) {
+                document.getElementById('register-confirm-password').classList.add('error');
+                document.getElementById('register-confirm-password-error').classList.add('visible');
+                isValid = false;
+            } else {
+                document.getElementById('register-confirm-password').classList.remove('error');
+                document.getElementById('register-confirm-password-error').classList.remove('visible');
+            }
+
+            // Validate terms agreement
+            if (!termsAgree.checked) {
+                document.getElementById('terms-agree-error').classList.add('visible');
+                isValid = false;
+            } else {
+                document.getElementById('terms-agree-error').classList.remove('visible');
+            }
+
+            // If form is valid, submit
+            if (isValid) {
+                // Here you would typically send the data to your server
+                // For demo purposes, we'll just show a success message
+                registerSuccess.classList.add('visible');
+                registerForm.reset();
+            }
+        });
+
+        // Reset password form
+        resetBtn.addEventListener('click', () => {
+            const email = document.getElementById('reset-email').value;
+
+            if (!validateEmail(email)) {
+                document.getElementById('reset-email').classList.add('error');
+                document.getElementById('reset-email-error').classList.add('visible');
+            } else {
+                document.getElementById('reset-email').classList.remove('error');
+                document.getElementById('reset-email-error').classList.remove('visible');
+
+                // Here you would typically send the reset request to your server
+                // For demo purposes, we'll just show a success message
+                resetSuccess.classList.add('visible');
+                document.getElementById('reset-email').value = '';
+
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    resetPasswordModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }, 3000);
+            }
+        });
+
+        // Terms checkbox affects register button state
+        termsAgree.addEventListener('change', () => {
+            if (termsAgree.checked) {
+                registerBtn.disabled = false;
+            } else {
+                registerBtn.disabled = true;
+            }
+        });
+
+        // Initialize
+        registerBtn.disabled = true;
+    </script>
+</body>
+</html>
