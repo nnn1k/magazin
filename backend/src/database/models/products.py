@@ -26,6 +26,7 @@ class ProductModel(Base):
     orders: Mapped[List['OrderModel']] = relationship(
         'OrderModel',
         secondary='products_in_orders',
+        overlaps='products_in_orders',
         back_populates='products',
         lazy='noload'
     )
