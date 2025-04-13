@@ -5,6 +5,7 @@ from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+from backend.src.modules.rebuild import rebuild_schemas
 from backend.views.base import backend_router
 from frontend.routers.routers import router as frontend_router
 app = FastAPI()
@@ -37,6 +38,8 @@ async def log_time_requests(request: Request, call_next):
 
     return response
 
+
+rebuild_schemas()
 
 
 

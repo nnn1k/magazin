@@ -1,18 +1,16 @@
 from datetime import datetime
-from typing import Optional
+from typing import List, Optional
 
 from pydantic import BaseModel, ConfigDict
 
 
-class CartSchema(BaseModel):
+class OrderSchema(BaseModel):
     id: int
-    product_id: int
     user_id: int
-    count: int
-    size: str
     created_at: datetime
     updated_at: datetime
 
-    product: Optional['ProductSchema'] = None
+    products: Optional[List['ProductSchema']] = []
 
     model_config = ConfigDict(from_attributes=True)
+

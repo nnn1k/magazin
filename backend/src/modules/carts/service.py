@@ -25,7 +25,7 @@ class CartService:
         carts = await self.cart_repo.get_all(user_id=user_id)
         return [CartSchema.model_validate(cart) for cart in carts]
 
-    async def delete(self, user_id: int, product_id: int, count: int, size: str) -> CartSchema:
+    async def delete(self, user_id: int, product_id: int, size: str) -> CartSchema:
         cart = await self.cart_repo.delete(product_id=product_id, user_id=user_id, size=size)
         return CartSchema.model_validate(cart)
 

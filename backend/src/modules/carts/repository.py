@@ -2,6 +2,7 @@ from typing import Sequence
 
 from sqlalchemy import insert, select, update, and_, delete
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import joinedload
 
 from backend.src.database.models.carts import CartModel
 
@@ -23,6 +24,7 @@ class CartRepository:
         stmt = (
             select(CartModel)
             .filter_by(product_id=product_id, user_id=user_id, size=size)
+            .options(joinedload(CartModel.product))
         )
         result = await self.session.execute(stmt)
         return result.scalars().first()
@@ -31,6 +33,7 @@ class CartRepository:
         stmt = (
             select(CartModel)
             .filter_by(user_id=user_id)
+            .options(joinedload(CartModel.product))
         )
         result = await self.session.execute(stmt)
         return result.scalars().all()

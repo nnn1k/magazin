@@ -41,3 +41,14 @@ async def create_cart(
 ):
     cart = await service.add(product_id=product_id, user_id=user.id, size=size, count=count)
     return {'cart': cart}
+
+
+@router.delete('/{product_id}')
+async def delete_cart(
+        product_id: int,
+        size: str,
+        user: UserSchema = Depends(get_user_by_token),
+        service: CartService = Depends(get_cart_service),
+):
+    await service.delete(product_id=product_id, user_id=user.id, size=size)
+    return {'msg': 'product deleted'}
