@@ -30,6 +30,6 @@ class CartService:
         return CartSchema.model_validate(cart)
 
     async def delete_all(self, user_id: int) -> Sequence[CartSchema]:
-        carts = await self.cart_repo.get_all(user_id=user_id)
+        carts = await self.cart_repo.delete_all(user_id=user_id)
         return [CartSchema.model_validate(cart) for cart in carts]
 

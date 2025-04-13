@@ -77,6 +77,7 @@ class CartRepository:
                     CartModel.user_id == user_id,
                 )
             )
+            .returning(CartModel)
         )
         result = await self.session.execute(stmt)
         return result.scalars().all()

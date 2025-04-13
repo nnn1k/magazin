@@ -11,7 +11,7 @@ from frontend.routers.routers import router as frontend_router
 app = FastAPI()
 
 app.include_router(backend_router)
-app.include_router(frontend_router)
+app.include_router(frontend_router, include_in_schema=False)
 frontend_dir = os.path.join(os.path.dirname(__file__), "frontend")
 app.mount("/frontend", StaticFiles(directory=frontend_dir), name="static")
 

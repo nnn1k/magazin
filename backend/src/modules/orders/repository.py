@@ -31,16 +31,21 @@ class OrderRepository:
         result = await self.session.execute(stmt)
         return result.scalars().first()
 
-    async def get_order(self, order_id: int) -> OrderModel:
+    async def get_one(self, order_id: int, user_id: int) -> OrderModel:
         stmt = (
             select(OrderModel)
-            .where(and_(OrderModel.id == order_id))
+            .where(
+                and_(
+                    OrderModel.id == order_id,
+                    OrderModel.user_id == user_id,
+                )
+            )
             .options(selectinload(OrderModel.products))
         )
         result = await self.session.execute(stmt)
         return result.scalars().first()
 
-    async def get_orders(self, user_id: int) -> Sequence[OrderModel]:
+    async def get_all(self, user_id: int) -> Sequence[OrderModel]:
         stmt = (
             select(OrderModel)
             .where(and_(OrderModel.user_id == user_id))
