@@ -30,3 +30,9 @@ def main_page(request: Request):
 def main_page(request: Request):
     return templates.TemplateResponse("/catalog_page/catalog_page.html", {"request": request})
 
+@router.get("/about")
+def main_page(request: Request):
+    return templates.TemplateResponse("/about_page/about_page.html", {"request": request})
+
+
+
