@@ -1,4 +1,4 @@
-from typing import Sequence
+from typing import Sequence, List
 
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -14,7 +14,7 @@ class OrderModel(Base):
     created_at: Mapped[created_at]
     updated_at: Mapped[updated_at]
 
-    products: Mapped[Sequence['ProductModel']] = relationship(
+    products: Mapped[List['ProductModel']] = relationship(
         'ProductModel',
         secondary='products_in_orders',
         back_populates='orders',
