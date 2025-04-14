@@ -158,8 +158,17 @@ function init() {
         const quantity = parseInt(quantityInput.value);
         const size = document.querySelector('.size-option.selected').textContent;
         const productName = modalProductTitle.textContent;
+        const id = productId
 
-        alert(`Оформление заказа:\n${productName}\nРазмер: ${size}\nКоличество: ${quantity}`);
+        const postResponse = makeRequest({
+            method: 'POST',
+            url: `/api/orders/fast_buy/${id}?size=${size}&count=${quantity}`,
+        })
+        if (postResponse){
+            console.log('ok')
+            closeProductModal();
+        }
+
         closeProductModal();
     });
 

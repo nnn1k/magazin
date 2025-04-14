@@ -23,7 +23,7 @@
         <div class="page-title-container">
             <div class="title-content">
                 <h1>Личный кабинет</h1>
-                <p class="user-greeting">Добро пожаловать, Иван Петров!</p>
+                <p class="user-greeting" id="user-greeting"></p>
             </div>
         </div>
     </section>
@@ -33,10 +33,10 @@
         <!-- Sidebar -->
         <div class="account-sidebar">
             <div class="user-card">
-                <div class="user-avatar">ИП</div>
+                <div class="user-avatar">🧑🏽</div>
                 <div class="user-info">
-                    <div class="user-name">Иван Петров</div>
-                    <div class="user-email">ivan.petrov@example.com</div>
+                    <div class="user-name" id="user-name"></div>
+                    <div class="user-email" id="user-email"></div>
                 </div>
             </div>
 
@@ -64,111 +64,9 @@
                     <h2 class="section-title">Мои заказы</h2>
                 </div>
 
-                <div class="order-card">
-                    <div class="order-header">
-                        <div>
-                            <div class="order-number">Заказ №12345</div>
-                            <div class="order-date">15 апреля 2025</div>
-                        </div>
-                        <div class="order-status status-shipped">Отправлен</div>
-                    </div>
+                <div class="order-card" id="order-card">
 
-                    <div class="order-items">
-                        <div class="order-item">
-                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Худи+ЦПС" alt="Худи ЦПС" class="item-image">
-                            <div class="item-details">
-                                <div class="item-name">Худи ЦПС классическое</div>
-                                <div class="item-price">2 500 ₽</div>
-                                <div class="item-quantity">Размер: L, Количество: 1</div>
-                            </div>
-                        </div>
-
-                        <div class="order-item">
-                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Футболка+ЦПС" alt="Футболка ЦПС" class="item-image">
-                            <div class="item-details">
-                                <div class="item-name">Футболка ЦПС базовая</div>
-                                <div class="item-price">1 200 ₽</div>
-                                <div class="item-quantity">Размер: M, Количество: 2</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="order-footer">
-                        <div class="order-total">Итого: <span class="order-total-value">4 900 ₽</span></div>
-                        <div class="order-actions">
-                            <button class="order-action-btn btn-primary">Отследить</button>
-                            <button class="order-action-btn btn-secondary">Детали заказа</button>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="order-card">
-                    <div class="order-header">
-                        <div>
-                            <div class="order-number">Заказ №12344</div>
-                            <div class="order-date">10 апреля 2025</div>
-                        </div>
-                        <div class="order-status status-delivered">Доставлен</div>
-                    </div>
-
-                    <div class="order-items">
-                        <div class="order-item">
-                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Кепка+ЦПС" alt="Кепка ЦПС" class="item-image">
-                            <div class="item-details">
-                                <div class="item-name">Кепка ЦПС</div>
-                                <div class="item-price">800 ₽</div>
-                                <div class="item-quantity">Количество: 1</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="order-footer">
-                        <div class="order-total">Итого: <span class="order-total-value">800 ₽</span></div>
-                        <div class="order-actions">
-                            <button class="order-action-btn btn-primary">Повторить заказ</button>
-                            <button class="order-action-btn btn-secondary">Оставить отзыв</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="order-card">
-                    <div class="order-header">
-                        <div>
-                            <div class="order-number">Заказ №12343</div>
-                            <div class="order-date">5 апреля 2025</div>
-                        </div>
-                        <div class="order-status status-delivered">Доставлен</div>
-                    </div>
-
-                    <div class="order-items">
-                        <div class="order-item">
-                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Штаны+ЦПС" alt="Штаны ЦПС" class="item-image">
-                            <div class="item-details">
-                                <div class="item-name">Штаны ЦПС спортивные</div>
-                                <div class="item-price">1 800 ₽</div>
-                                <div class="item-quantity">Размер: M, Количество: 1</div>
-                            </div>
-                        </div>
-
-                        <div class="order-item">
-                            <img src="https://via.placeholder.com/80x80/0056b3/ffffff?text=Футболка+ЦПС" alt="Футболка ЦПС" class="item-image">
-                            <div class="item-details">
-                                <div class="item-name">Футболка ЦПС с принтом</div>
-                                <div class="item-price">1 500 ₽</div>
-                                <div class="item-quantity">Размер: M, Количество: 1</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="order-footer">
-                        <div class="order-total">Итого: <span class="order-total-value">3 300 ₽</span></div>
-                        <div class="order-actions">
-                            <button class="order-action-btn btn-primary">Повторить заказ</button>
-                            <button class="order-action-btn btn-secondary">Оставить отзыв</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
             <!-- Addresses Section -->
             <div class="content-section" id="addresses">
@@ -176,15 +74,15 @@
                     <h2 class="section-title">Моя корзина</h2>
                 </div>
 
-                <div class="order-card">
+                <div class="order-card" id="order-cardd">
 
                     <div class="order-items" id="order-items">
 
                     </div>
 
-                    <div class="order-footer">
+                    <div class="order-footer" id="order-footer">
                         <div class="order-actions">
-                            <button class="order-action-btn btn-primary">Заказать</button>
+                            <button class="order-action-btn btn-primary" id="order-action-btn" onclick="allBuyFromCart()">Заказать</button>
                         </div>
                     </div>
                 </div>
