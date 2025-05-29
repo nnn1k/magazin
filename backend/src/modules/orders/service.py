@@ -29,8 +29,8 @@ class OrderService:
         order = await self.order_repo.get_one(order_id=order.id, user_id=user_id)
         return OrderSchema.model_validate(order)
 
-    async def get_all(self, user_id: int) -> List[OrderSchema]:
-        orders = await self.order_repo.get_all(user_id=user_id)
+    async def get_all(self, **kwargs) -> List[OrderSchema]:
+        orders = await self.order_repo.get_all(**kwargs)
         return [OrderSchema.model_validate(order) for order in orders]
 
     async def get_one(self, order_id: int, user_id: int) -> OrderSchema:

@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 
 from backend.src.modules.auth.dependencies import get_user_by_token
 from backend.src.modules.products.dependencies import get_product_service
-from backend.src.modules.products.schemas import ProductSchema, ProductCreate
+from backend.src.modules.products.schemas import ProductCreate
 from backend.src.modules.products.service import ProductService
 from backend.src.modules.users.schemas import UserSchema
 

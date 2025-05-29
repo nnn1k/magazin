@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.src.classes.AuthJWT import jwt_token
 from backend.src.database.dependencies import get_db
-from backend.src.modules.auth.exc import invalid_token_exc
+from backend.src.modules.auth.exc import invalid_token_exc, user_is_not_admin_exc
 from backend.src.modules.auth.repository import AuthRepository
 from backend.src.modules.users.dependencies import get_user_service
 from backend.src.modules.users.schemas import UserSchema
@@ -28,7 +28,8 @@ async def get_user_by_token(
         access_token=Cookie(None, include_in_schema=False),
         refresh_token=Cookie(None, include_in_schema=False),
         response: Response = None,
-        service: UserService = Depends(get_user_service)
+        service: UserService = Depends(get_user_service),
+        is_admin: bool = False,
 ) -> UserSchema:
     user_id: int | None = None
     if access_token:
@@ -54,5 +55,22 @@ async def get_user_by_token(
             raise invalid_token_exc
     if not user_id:
         raise invalid_token_exc
-    return await service.get_user(id=int(user_id))
+    user = await service.get_user(id=int(user_id))
+    if is_admin and not user.is_admin:
+        raise user_is_not_admin_exc
+    return user
 
+
+async def get_admin_by_token(
+        access_token=Cookie(None, include_in_schema=False),
+        refresh_token=Cookie(None, include_in_schema=False),
+        response: Response = None,
+        service: UserService = Depends(get_user_service)
+):
+    return await get_user_by_token(
+        is_admin=True,
+        access_token=access_token,
+        refresh_token=refresh_token,
+        service=service,
+        response=response
+    )

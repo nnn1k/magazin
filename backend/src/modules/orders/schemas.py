@@ -4,6 +4,8 @@ from typing import List, Optional
 from pydantic import BaseModel, ConfigDict
 
 
+
+
 class OrderSchema(BaseModel):
     id: int
     user_id: int
@@ -11,6 +13,7 @@ class OrderSchema(BaseModel):
     updated_at: datetime
 
     products: Optional[List['ProductSchema']] = []
+    user: Optional['UserSchema'] = None
 
     model_config = ConfigDict(from_attributes=True)
 

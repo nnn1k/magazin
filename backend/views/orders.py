@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from backend.src.modules.auth.dependencies import get_user_by_token
+from backend.src.modules.auth.dependencies import get_user_by_token, get_admin_by_token
 from backend.src.modules.orders.dependencies import get_order_service
 from backend.src.modules.orders.service import OrderService
 from backend.src.modules.users.schemas import UserSchema
@@ -11,7 +11,7 @@ router = APIRouter(
 )
 
 
-@router.get("")
+@router.get('')
 async def get_orders(
         user: UserSchema = Depends(get_user_by_token),
         service: OrderService = Depends(get_order_service)
@@ -19,6 +19,14 @@ async def get_orders(
     orders = await service.get_all(user_id=user.id)
     return {'orders': orders}
 
+
+@router.get('/admin')
+async def get_all_orders(
+        user: UserSchema = Depends(get_admin_by_token),
+        service: OrderService = Depends(get_order_service),
+):
+    orders = await service.get_all()
+    return {'orders': orders}
 
 @router.get('/{order_id}')
 async def get_order(

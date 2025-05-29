@@ -16,6 +16,5 @@ def get_product_repo(
 
 def get_product_service(
         product_repo: ProductRepository = Depends(get_product_repo),
-        user_serv: UserService = Depends(get_user_service)
 ):
-    return ProductService(product_repo=product_repo, user_serv=user_serv)
+    return ProductService(product_repo=product_repo)

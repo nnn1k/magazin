@@ -6,7 +6,7 @@ async def get_db():
         try:
             yield session
             await session.commit()
-            print('commit')
+            print('\ncommit')
         except Exception as e:
             await session.rollback()
             print(f'Rollback due to: {str(e)}')

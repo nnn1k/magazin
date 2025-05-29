@@ -1,6 +1,5 @@
 from typing import Sequence
 
-from sqlalchemy.exc import IntegrityError
 
 from backend.src.modules.products.repository import ProductRepository
 from backend.src.modules.products.schemas import ProductSchema, ProductCreate
@@ -10,9 +9,8 @@ from backend.src.modules.users.service import UserService
 
 
 class ProductService:
-    def __init__(self, product_repo: ProductRepository, user_serv: UserService):
+    def __init__(self, product_repo: ProductRepository):
         self.product_repo = product_repo
-        self.user_repo = user_serv
 
     async def get_all(self) -> Sequence[ProductSchema]:
         products = await self.product_repo.get_all()

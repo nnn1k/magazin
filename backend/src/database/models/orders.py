@@ -21,5 +21,10 @@ class OrderModel(Base):
         back_populates='orders',
         lazy='noload'
     )
+    user: Mapped['UserModel'] = relationship(
+        'UserModel',
+        back_populates='orders',
+        lazy='noload'
+    )
 
 
