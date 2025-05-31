@@ -36,4 +36,5 @@ async def logout(
 ):
     response.delete_cookie(key='access_token')
     response.delete_cookie(key='refresh_token')
+    response.delete_cookie(key='user_type')
     return {'msg': 'logged out'}

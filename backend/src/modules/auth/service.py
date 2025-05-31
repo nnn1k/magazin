@@ -53,4 +53,9 @@ class AuthService:
             jwt_token.create_refresh_token(payload=payload),
             max_age=60 * 60 * 24 * 365
         )
+        response.set_cookie(
+            'user_type',
+            'admin' if user.is_admin else 'user',
+            max_age=60 * 60 * 24 * 365
+        )
 
