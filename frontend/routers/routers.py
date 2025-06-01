@@ -15,10 +15,20 @@ def main_page(request: Request):
 
 @router.get("/profile")
 def main_page(request: Request):
+    user_type = request.cookies.get("user_type")
+    if not user_type:
+        return templates.TemplateResponse("/auth/auth.html", {"request": request})
+    if user_type == 'admin':
+        return templates.TemplateResponse("/admin/admin.html", {"request": request})
+    return templates.TemplateResponse("/profile/profile.html", {"request": request})
+
+
+@router.get("/admin")
+def main_page(request: Request):
     token = request.cookies.get("access_token")
     if not token:
         return templates.TemplateResponse("/auth/auth.html", {"request": request})
-    return templates.TemplateResponse("/profile/profile.html", {"request": request})
+    return templates.TemplateResponse("/admin/admin.html", {"request": request})
 
 
 @router.get("/login")
