@@ -33,8 +33,32 @@ async def get_review(
     return {'reviews': reviews}
 
 
+@router.get('')
+async def get_all_review(
+        user: UserSchema = Depends(get_user_by_token),
+        service: ReviewService = Depends(get_review_serv)
+):
+    reviews = await service.get_one()
+    return {'reviews': reviews}
+
+
 @router.put('/{review_id}')
 async def update_views(
         review_id: int,
+        new_review: ReviewCreate,
+        user: UserSchema = Depends(get_user_by_token),
+        service: ReviewService = Depends(get_review_serv)
 ):
-    ...
+    review = await service.update(review_id=review_id, new_review=new_review, user=user)
+    return {'review': review}
+
+
+@router.delete('/{review_id}')
+async def delete_review(
+        review_id: int,
+        user: UserSchema = Depends(get_user_by_token),
+        service: ReviewService = Depends(get_review_serv)
+):
+    await service.delete(review_id=review_id, user=user)
+    return {'status': True}
+
