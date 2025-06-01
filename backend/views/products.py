@@ -53,6 +53,19 @@ async def create_product(
     return {'product': product}
 
 
+@router.put("/{product_id}")
+async def update_product(
+        product_id: int,
+        new_product: Annotated[ProductCreate, Depends()],
+        file: UploadFile = File(...),
+        user: UserSchema = Depends(get_admin_by_token),
+        service: ProductService = Depends(get_product_service),
+):
+    url = await save_file(file)
+    product = await service.update(product_id=product_id, new_product=new_product, user=user, url=url)
+    return {'product': product}
+
+
 @router.delete("/{product_id}")
 async def delete_product(
         product_id: int,

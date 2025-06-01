@@ -28,6 +28,20 @@ class ProductService:
         schema = ProductSchema.model_validate(product)
         return schema
 
+    async def update(self, product_id: int, new_product: ProductCreate, user: UserSchema, url: str) -> ProductSchema:
+        if not user.is_admin:
+            raise user_is_not_owner_exc
+        product = await self.product_repo.update(
+                product_id=product_id,
+                name=new_product.name,
+                description=new_product.description,
+                price=new_product.price,
+                category=new_product.category,
+                image=url,
+            )
+        schema = ProductSchema.model_validate(product)
+        return schema
+
     async def delete(self, product_id: int) -> None:
         product = await self.product_repo.delete(product_id=product_id)
         if not product:
