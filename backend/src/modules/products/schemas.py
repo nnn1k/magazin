@@ -18,5 +18,4 @@ class ProductCreate(BaseModel):
     name: str
     price: float
     category: str
-    image_url: str = ''
     description: str = ''

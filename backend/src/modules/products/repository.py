@@ -1,6 +1,6 @@
 from typing import Sequence
 
-from sqlalchemy import select, insert
+from sqlalchemy import select, insert, delete
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
@@ -22,14 +22,22 @@ class ProductRepository:
         return result.scalars().all()
 
     async def create(
-            self, name: str, price: float, category: str, image_url: str = '', description: str = ''
+            self, name: str, price: float, category: str, image: str = '', description: str = ''
     ) -> ProductModel:
         stmt = (
             insert(ProductModel)
-            .values(name=name, price=price, category=category, image_url=image_url, description=description)
+            .values(name=name, price=price, category=category, image=image, description=description)
             .returning(ProductModel)
         )
         result = await self.session.execute(stmt)
         return result.scalars().first()
 
+    async def delete(self, product_id: int) -> ProductModel:
+        stmt = (
+            delete(ProductModel)
+            .filter_by(id=product_id)
+            .returning(ProductModel)
+        )
+        result = await self.session.execute(stmt)
+        return result.scalars().first()
 
