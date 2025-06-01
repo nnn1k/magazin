@@ -2,6 +2,7 @@ from typing import Sequence
 
 from sqlalchemy import select, insert, update, delete
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import joinedload
 
 from backend.src.database.models import ReviewModel
 
@@ -15,6 +16,7 @@ class ReviewRepository:
         stmt = (
             select(ReviewModel)
             .filter_by(**kwargs)
+            .options(joinedload(ReviewModel.user))
         )
         result = await self.session.execute(stmt)
         return result.scalars().all()
@@ -23,6 +25,7 @@ class ReviewRepository:
         stmt = (
             select(ReviewModel)
             .filter_by(**kwargs)
+            .options(joinedload(ReviewModel.user))
         )
         result = await self.session.execute(stmt)
         return result.scalars().first()

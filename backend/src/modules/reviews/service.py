@@ -16,10 +16,10 @@ class ReviewService:
         old_review = await self.review_repo.get_one(user_id=user.id, product_id=product_id)
         if old_review:
             raise review_is_exist_exc
-        review = await self.review_repo.create(
+        new_review = await self.review_repo.create(
             user_id=user.id, product_id=product_id, rating=new_review.rating, description=new_review.description
         )
-        schema = ReviewSchema.model_validate(review)
+        schema = ReviewSchema.model_validate(new_review)
         return schema
 
     async def get_all(self, **kwargs) -> List[ReviewSchema]:
@@ -35,7 +35,9 @@ class ReviewService:
         old_review = await self.review_repo.get_one(user_id=user.id, product_id=new_review.product_id)
         if not old_review:
             raise review_is_not_exist_exc
-        new_review = await self.review_repo.update(review_id=review_id, rating=new_review.rating, description=new_review.description)
+        new_review = await self.review_repo.update(
+            review_id=review_id, rating=new_review.rating, description=new_review.description
+        )
         schema = ReviewSchema.model_validate(new_review)
         return schema
 
