@@ -126,14 +126,20 @@ async function postProduct(){
     const price  = document.getElementById("product-price").value
     const category  = document.getElementById("product-category").value
     const description = document.getElementById("product-description").value
-    let file = document.querySelector('#product-image');
-    file = file.files[0]
+    const file = document.querySelector('#product-image').files[0]
     console.log(file)
+
+     const formData = new FormData();
+
+    // Добавляем данные продукта как JSON
+
+    // Добавляем файл с правильным именем поля
+    formData.append('file', file);
 
     try {
     const response = await fetch(`http://127.0.0.1:8000/api/products/?name=${name}&price=${price}&category=${category}&description=${description}`, {
       method: 'POST',
-      body:file
+      body:formData
     });
     if (response.ok){
           console.log(response)
