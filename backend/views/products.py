@@ -2,7 +2,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException
 import os
-
+import uuid
 
 from backend.src.modules.auth.dependencies import get_user_by_token, get_admin_by_token
 from backend.src.modules.products.dependencies import get_product_service
@@ -18,8 +18,9 @@ router = APIRouter(
     tags=['products']
 )
 
+
 async def save_file(file):
-    filename = f'test{os.path.splitext(file.filename)[1]}'
+    filename = f'{uuid.uuid4()}{os.path.splitext(file.filename)[1]}'
     # Сохраняем файл на диск
     file_location = os.path.join(UPLOAD_DIR, filename)
     try:
@@ -50,6 +51,7 @@ async def create_product(
     url = await save_file(file)
     product = await service.create(new_product=new_product, user=user, url=url)
     return {'product': product}
+
 
 @router.delete("/{product_id}")
 async def delete_product(
