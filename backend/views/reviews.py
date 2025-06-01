@@ -38,7 +38,7 @@ async def get_all_review(
         user: UserSchema = Depends(get_user_by_token),
         service: ReviewService = Depends(get_review_serv)
 ):
-    reviews = await service.get_one()
+    reviews = await service.get_all()
     return {'reviews': reviews}
 
 
