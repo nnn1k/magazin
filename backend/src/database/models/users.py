@@ -20,3 +20,9 @@ class UserModel(Base):
         back_populates='user',
         lazy='noload'
     )
+
+    reviews: Mapped[list['ReviewModel']] = relationship(
+        'ReviewModel',
+        back_populates='user',
+        lazy='noload'
+    )

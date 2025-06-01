@@ -5,7 +5,6 @@ from backend.src.modules.products.repository import ProductRepository
 from backend.src.modules.products.schemas import ProductSchema, ProductCreate
 from backend.src.modules.users.exc import user_is_not_owner_exc
 from backend.src.modules.users.schemas import UserSchema
-from backend.src.modules.users.service import UserService
 
 
 class ProductService:

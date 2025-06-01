@@ -10,9 +10,10 @@ class ProductRepository:
     def __init__(self, session: AsyncSession):
         self.session = session
 
-    async def get_all(self) -> Sequence[ProductModel]:
+    async def get_all(self, **kwargs) -> Sequence[ProductModel]:
         stmt = (
             select(ProductModel)
+            .filter_by(**kwargs)
         )
         result = await self.session.execute(stmt)
         return result.scalars().all()

@@ -12,7 +12,7 @@ def get_review_repo(
     return ReviewRepository(session)
 
 
-def get_review_service(
+def get_review_serv(
         review_repo: ReviewRepository = Depends(get_review_repo)
 ):
     return ReviewService(review_repo=review_repo)

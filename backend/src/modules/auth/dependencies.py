@@ -1,4 +1,4 @@
-from fastapi import Depends, Cookie, Response
+from fastapi import Depends, Cookie, Response, Query
 from jwt import ExpiredSignatureError
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -29,7 +29,7 @@ async def get_user_by_token(
         refresh_token=Cookie(None, include_in_schema=False),
         response: Response = None,
         service: UserService = Depends(get_user_service),
-        is_admin: bool = False,
+        is_admin: bool = Query(default=False, include_in_schema=False),
 ) -> UserSchema:
     user_id: int | None = None
     if access_token:
