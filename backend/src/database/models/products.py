@@ -30,3 +30,8 @@ class ProductModel(Base):
         back_populates='products',
         lazy='noload'
     )
+    reviews: Mapped[List['ReviewModel']] = relationship(
+        'ReviewModel',
+        back_populates='product',
+        lazy='noload'
+    )

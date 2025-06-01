@@ -2,7 +2,9 @@ from typing import Sequence
 
 from sqlalchemy import select, insert
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
+from backend.src.database.models import ReviewModel
 from backend.src.database.models.products import ProductModel
 
 
@@ -14,6 +16,7 @@ class ProductRepository:
         stmt = (
             select(ProductModel)
             .filter_by(**kwargs)
+            .options(selectinload(ProductModel.reviews).joinedload(ReviewModel.user))
         )
         result = await self.session.execute(stmt)
         return result.scalars().all()

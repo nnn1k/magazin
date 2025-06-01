@@ -20,3 +20,8 @@ class ReviewModel(Base):
         back_populates='reviews',
         lazy='noload'
     )
+    product: Mapped['ProductModel'] = relationship(
+        'ProductModel',
+        back_populates='reviews',
+        lazy='noload'
+    )

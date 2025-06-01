@@ -9,6 +9,8 @@ class ProductSchema(BaseModel):
     image: str
     description: str
 
+    reviews: list['ReviewSchema'] = []
+
     model_config = ConfigDict(from_attributes=True)
 
 

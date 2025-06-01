@@ -32,6 +32,7 @@ async def get_review(
     reviews = await service.get_one(id=review_id)
     return {'reviews': reviews}
 
+
 @router.put('/{review_id}')
 async def update_views(
         review_id: int,
