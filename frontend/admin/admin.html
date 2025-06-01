@@ -1017,7 +1017,6 @@
                             <th>Название</th>
                             <th>Цена</th>
                             <th>Категория</th>
-                            <th>На складе</th>
                             <th>Действия</th>
                         </tr>
                     </thead>
@@ -1028,7 +1027,6 @@
                             <td>Смартфон X10</td>
                             <td>$599.99</td>
                             <td>Смартфоны</td>
-                            <td class="stock-low">5</td>
                             <td>
                                 <div class="product-actions">
                                     <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
@@ -1081,9 +1079,6 @@
                     </tbody>
                 </table>
             </div>
-
-
-
         </div>
     </div>
 
@@ -1107,15 +1102,13 @@
                     <label for="product-category">Категория</label>
                     <select id="product-category" class="form-control">
                         <option value="">Выберите категорию</option>
-                        <option value="smartphones">Смартфоны</option>
-                        <option value="laptops">Ноутбуки</option>
+                        <option value="hoodies">Кофты</option>
+                        <option value="tshirts">Футболки</option>
+                        <option value="pants">Штаны</option>
+                        <option value="shoes">Обувь</option>
+                        <option value="outerwear">Верхняя одежда</option>
                         <option value="accessories">Аксессуары</option>
-                        <option value="gadgets">Гаджеты</option>
                     </select>
-                </div>
-                <div class="form-group" style="margin-bottom: 1.5rem;">
-                    <label for="product-stock">Количество на складе</label>
-                    <input type="number" id="product-stock" class="form-control" placeholder="Введите количество">
                 </div>
                 <div class="form-group" style="margin-bottom: 1.5rem;">
                     <label for="product-description">Описание</label>
@@ -1127,8 +1120,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary">Отмена</button>
-                <button class="btn-primary">Добавить товар</button>
+                <button class="section-action" id="add-product-btn_2" onclick="postProduct()">Добавить товар</button>
             </div>
         </div>
     </div>

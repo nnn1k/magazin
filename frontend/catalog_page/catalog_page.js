@@ -12,7 +12,86 @@ async function getProducts() {
         url: `/api/products`
     })
     products = getResponse.products
+    console.log(products)
     renderProducts()
+}
+
+async function getReviews() {
+    const getResponse = await makeRequest({
+        method: 'GET',
+        url: `/api/reviews`
+    })
+    renderFeedbackItems(getResponse)
+}
+
+function renderFeedbackItems(jsonData) {
+  // Создаем контейнер для всех отзывов
+    const mainCon = document.getElementById('feedback-list')
+    mainCon.innerHTML = ''
+  const feedbackContainer = document.createElement('div');
+  feedbackContainer.className = 'feedback-container';
+
+  // Обрабатываем каждый отзыв
+  jsonData.reviews.forEach(review => {
+    // Создаем элемент отзыва
+      if (review.product_id != productId){
+          console.log(productId)
+          return
+      }
+    const feedbackItem = document.createElement('div');
+    feedbackItem.className = 'feedback-item';
+
+    // Форматируем дату
+    const reviewDate = new Date(review.created_at);
+    const formattedDate = `${reviewDate.getDate().toString().padStart(2, '0')}.${(reviewDate.getMonth() + 1).toString().padStart(2, '0')}.${reviewDate.getFullYear()}`;
+
+    // Создаем звездочки рейтинга
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+      const activeClass = i <= review.rating ? 'active' : '';
+      starsHtml += `<i class="fas fa-star ${activeClass}">★</i>`;
+    }
+
+    // Заполняем содержимое отзыва
+    feedbackItem.innerHTML = `
+      <div class="feedback-item-header">
+        <span class="feedback-author">${review.user.name}</span>
+        <span class="feedback-date">${formattedDate}</span>
+      </div>
+      <div class="feedback-rating">
+        ${starsHtml}
+      </div>
+      <p class="feedback-text">
+        ${review.description || 'Пользователь не оставил комментарий'}
+      </p>
+    `;
+
+    // Добавляем отзыв в контейнер
+    feedbackContainer.appendChild(feedbackItem);
+  });
+
+    mainCon.appendChild(feedbackContainer)
+}
+
+
+
+async function postReview(){
+    const rating = document.getElementById('feedback-rating-value').value
+    const description = document.getElementById('feedback-text').value
+    console.log(rating)
+    console.log(description)
+    const postResponse = await makeRequest({
+        method: 'post',
+        url: `/api/reviews/${productId}`,
+        data: {
+            rating,
+            description
+        }
+    })
+    if (postResponse){
+        alert("Отзыв отправлен")
+        location.reload();
+    }
 }
 
 function renderProducts() {
@@ -85,21 +164,22 @@ function renderProducts() {
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
                         <p class="product-price">${product.price} ₽</p>
-                      
                     </div>
                 `;
 
         productsContainer.appendChild(productCard);
 
         // Add click event to open modal
+
+
         productCard.addEventListener('click', () => {
             openProductModal(product);
         });
     });
 }
 
-function init() {
 
+function init() {
     // Category filter
     categoryItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -215,4 +295,6 @@ function init() {
     });
 }
 
+window.getReviews = getReviews
+window.postReview = postReview
 

@@ -99,6 +99,7 @@
                 <div class="modal-details">
                     <h2 class="modal-title" id="modal-product-title"></h2>
                     <div class="modal-price" id="modal-product-price"></div>
+                    <a href="#" id="show-feedback-modal">Отзывы</a>
                     <p class="modal-description" id="modal-product-description"></p>
 
                     <div class="size-selector">
@@ -127,6 +128,46 @@
                         <button class="add-to-cart-btn">Добавить в корзину</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-modal-overlay" id="feedback-modal">
+        <div class="feedback-modal-container">
+            <div class="feedback-modal-header">
+                <h3>Отзывы о товаре "Смартфон X10"</h3>
+                <button class="feedback-modal-close">&times;</button>
+            </div>
+            <div class="feedback-modal-body">
+                <!-- Форма для добавления отзыва -->
+                <div class="feedback-form-wrapper">
+                    <h4>Оставить отзыв</h4>
+                    <div class="feedback-form-group">
+                        <label class="feedback-form-label">Ваша оценка:</label>
+                        <div class="feedback-rating-stars" id="feedback-rating-stars">
+                            <i class="fas fa-star feedback-star" data-rating="1">★</i>
+                            <i class="fas fa-star feedback-star" data-rating="2">★</i>
+                            <i class="fas fa-star feedback-star" data-rating="3">★</i>
+                            <i class="fas fa-star feedback-star" data-rating="4">★</i>
+                            <i class="fas fa-star feedback-star" data-rating="5">★</i>
+                        </div>
+                        <input type="hidden" id="feedback-rating-value" value="0">
+                    </div>
+                    <div class="feedback-form-group">
+                        <label for="feedback-text" class="feedback-form-label">Ваш отзыв:</label>
+                        <textarea id="feedback-text" class="feedback-form-control feedback-form-textarea" placeholder="Расскажите о вашем опыте использования товара"></textarea>
+                    </div>
+                </div>
+
+                <!-- Список отзывов -->
+                <h4>Все отзывы </h4>
+                <div class="feedback-list-container" id="feedback-list">
+                    <!-- Отзывы будут добавляться сюда динамически -->
+                </div>
+            </div>
+            <div class="feedback-modal-footer">
+                <button class="feedback-btn" id="feedback-cancel-btn">Отмена</button>
+                <button class="feedback-btn feedback-btn-primary" id="feedback-submit-btn" onclick="postReview()">Отправить отзыв</button>
             </div>
         </div>
     </div>
@@ -198,6 +239,7 @@
             modalProductTitle.textContent = product.name;
             modalProductPrice.textContent = `${product.price} ₽`;
             modalProductDescription.textContent = product.description;
+            getReviews()
 
             // Reset quantity
             quantityInput.value = 1;
@@ -220,7 +262,118 @@
         // Initialize
 
 
-        // Initialize when DOM is loaded
+
+        const showFeedbackModalBtn = document.getElementById('show-feedback-modal');
+        const feedbackModal = document.getElementById('feedback-modal');
+        const closeFeedbackModalBtn = document.querySelector('.feedback-modal-close');
+        const cancelFeedbackBtn = document.getElementById('feedback-cancel-btn');
+
+        showFeedbackModalBtn.addEventListener('click', () => {
+            feedbackModal.classList.add('active');
+        });
+
+        closeFeedbackModalBtn.addEventListener('click', () => {
+            feedbackModal.classList.remove('active');
+        });
+
+        cancelFeedbackBtn.addEventListener('click', () => {
+            feedbackModal.classList.remove('active');
+        });
+
+        feedbackModal.addEventListener('click', (e) => {
+            if (e.target === feedbackModal) {
+                feedbackModal.classList.remove('active');
+            }
+        });
+
+        // Система рейтинга звездами
+        const feedbackStars = document.querySelectorAll('.feedback-star');
+        const feedbackRatingValue = document.getElementById('feedback-rating-value');
+
+        feedbackStars.forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = parseInt(this.getAttribute('data-rating'));
+                feedbackRatingValue.value = rating;
+
+                // Обновляем отображение звезд
+                feedbackStars.forEach((s, index) => {
+                    if (index < rating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+
+            star.addEventListener('mouseover', function() {
+                const hoverRating = parseInt(this.getAttribute('data-rating'));
+
+                feedbackStars.forEach((s, index) => {
+                    if (index < hoverRating) {
+                        s.classList.add('hover');
+                    } else {
+                        s.classList.remove('hover');
+                    }
+                });
+            });
+
+            star.addEventListener('mouseout', function() {
+                feedbackStars.forEach(s => {
+                    s.classList.remove('hover');
+                });
+            });
+        });
+
+        // Отправка отзыва
+        const submitFeedbackBtn = document.getElementById('feedback-submit-btn');
+        const feedbackList = document.getElementById('feedback-list');
+        const feedbackCount = document.getElementById('feedback-count');
+
+        submitFeedbackBtn.addEventListener('click', function() {
+            const rating = parseInt(feedbackRatingValue.value);
+            const text = document.getElementById('feedback-text').value.trim();
+
+            if (rating === 0) {
+                alert('Пожалуйста, поставьте оценку');
+                return;
+            }
+
+            if (text === '') {
+                alert('Пожалуйста, напишите отзыв');
+                return;
+            }
+
+
+            // Создаем новый отзыв
+            const now = new Date();
+            const dateStr = `${now.getDate()}.${now.getMonth() + 1}.${now.getFullYear()}`;
+
+            const newFeedback = document.createElement('div');
+            newFeedback.className = 'feedback-item';
+            newFeedback.innerHTML = `
+                <div class="feedback-item-header">
+                    <span class="feedback-author">${name}</span>
+                    <span class="feedback-date">${dateStr}</span>
+                </div>
+                <div class="feedback-rating">
+                    ${'<i class="fas fa-star active">★</i>'.repeat(rating)}
+                    ${'<i class="fas fa-star"></i>'.repeat(5 - rating)}
+                </div>
+                <p class="feedback-text">${text}</p>
+            `;
+
+            // Добавляем новый отзыв в начало списка
+            feedbackList.insertBefore(newFeedback, feedbackList.firstChild);
+
+            // Обновляем счетчик отзывов
+            feedbackCount.textContent = parseInt(feedbackCount.textContent) + 1;
+
+            // Очищаем форму
+            feedbackRatingValue.value = 0;
+            document.getElementById('feedback-text').value = '';
+            feedbackStars.forEach(star => star.classList.remove('active'));
+
+        });
     </script>
 <script type="module" src="/frontend/catalog_page/catalog_page.js"></script>
 </body>

@@ -609,6 +609,185 @@ footer {
     }
 }
 
+.feedback-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.feedback-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.feedback-modal-container {
+    background-color: white;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 8px;
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-modal-overlay.active .feedback-modal-container {
+    transform: translateY(0);
+}
+
+.feedback-modal-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feedback-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #777;
+}
+
+.feedback-modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.feedback-modal-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* Стили для формы отзыва */
+.feedback-form-wrapper {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.feedback-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.feedback-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.feedback-form-control {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.feedback-form-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.feedback-rating-stars {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.feedback-star {
+    font-size: 1.5rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.feedback-star.active, .feedback-star:hover {
+    color: #ffc107;
+}
+
+.feedback-btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.feedback-btn-primary {
+    background-color: #0056b3;
+    color: white;
+}
+
+.feedback-btn-primary:hover {
+    background-color: #003d7a;
+}
+
+/* Стили для списка отзывов */
+.feedback-list-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.feedback-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.feedback-item:last-child {
+    border-bottom: none;
+}
+
+.feedback-item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.feedback-author {
+    font-weight: 600;
+}
+
+.feedback-date {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.feedback-rating {
+    color: #ffc107;
+    margin-bottom: 0.5rem;
+}
+
+.feedback-text {
+    line-height: 1.6;
+}
+
+.feedback-empty {
+    text-align: center;
+    padding: 2rem;
+    color: #777;
+}
+
 @media (max-width: 480px) {
     .nav-links {
         flex-direction: column;

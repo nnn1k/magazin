@@ -1,4 +1,4 @@
-import {makeRequest} from '/frontend/func_js/utils.js';
+import {apiUrl, makeRequest} from '/frontend/func_js/utils.js';
 
 async function login() {
     const email = document.getElementById("login-email").value
@@ -12,7 +12,7 @@ async function login() {
         }
     })
     if (postResponse) {
-        window.location.href = "http://127.0.0.1:8000/profile"
+        window.location.href = apiUrl + '/profile'
     }
 }
 
@@ -32,7 +32,7 @@ async function registration() {
         }
     })
     if (postResponse) {
-        window.location.href = "http://127.0.0.1:8000/profile"
+        window.location.href = apiUrl + '/profile'
     }
 }
 
