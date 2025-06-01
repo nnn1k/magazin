@@ -1,4 +1,4 @@
-import {makeRequest} from '/frontend/func_js/utils.js';
+import {apiUrl, makeRequest} from '/frontend/func_js/utils.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     getProductsInCart()
@@ -12,7 +12,7 @@ async function logout() {
         url: '/api/auth/logout',
     })
     if (postResponse) {
-        window.location.href = "http://127.0.0.1:8000"
+        window.location.href = apiUrl
     }
 }
 

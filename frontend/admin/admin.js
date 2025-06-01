@@ -12,7 +12,7 @@ async function logout() {
         url: '/api/auth/logout',
     })
     if (postResponse) {
-        window.location.href = "http://127.0.0.1:8000"
+        window.location.href = apiUrl
     }
 }
 
@@ -137,7 +137,7 @@ async function postProduct(){
     formData.append('file', file);
 
     try {
-    const response = await fetch(`http://127.0.0.1:8000/api/products/?name=${name}&price=${price}&category=${category}&description=${description}`, {
+    const response = await fetch(apiUrl + `/api/products/?name=${name}&price=${price}&category=${category}&description=${description}`, {
       method: 'POST',
       body:formData
     });
