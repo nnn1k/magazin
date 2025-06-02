@@ -28,7 +28,7 @@ class ProductService:
         schema = ProductSchema.model_validate(product)
         return schema
 
-    async def update(self, product_id: int, new_product: ProductCreate, user: UserSchema, url: str) -> ProductSchema:
+    async def update(self, product_id: int, new_product: ProductCreate, user: UserSchema) -> ProductSchema:
         if not user.is_admin:
             raise user_is_not_owner_exc
         product = await self.product_repo.update(
@@ -37,7 +37,6 @@ class ProductService:
                 description=new_product.description,
                 price=new_product.price,
                 category=new_product.category,
-                image=url,
             )
         schema = ProductSchema.model_validate(product)
         return schema
