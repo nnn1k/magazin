@@ -35,9 +35,12 @@ async def log_time_requests(request: Request, call_next):
             f"{request.method} {request.url.path} - \n"
             f"Статус: {response.status_code} - Время обработки: {duration:.4f} секунд\n"
         )
+    if response.status_code == 307 and "location" in response.headers:
+        location = response.headers["location"]
+        if location.startswith("http://"):
+            response.headers["location"] = location.replace("http://", "https://")
 
     return response
-
 
 rebuild_schemas()
 
