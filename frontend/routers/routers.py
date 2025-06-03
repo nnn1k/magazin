@@ -14,7 +14,7 @@ def main_page(request: Request):
 
 
 @router.get("/profile")
-def main_page(request: Request):
+def profile_page(request: Request):
     user_type = request.cookies.get("user_type")
     if not user_type:
         return templates.TemplateResponse("/auth/auth.html", {"request": request})
@@ -24,7 +24,7 @@ def main_page(request: Request):
 
 
 @router.get("/admin")
-def main_page(request: Request):
+def admin_page(request: Request):
     token = request.cookies.get("access_token")
     if not token:
         return templates.TemplateResponse("/auth/auth.html", {"request": request})
@@ -32,16 +32,16 @@ def main_page(request: Request):
 
 
 @router.get("/login")
-def main_page(request: Request):
+def login_page(request: Request):
     return templates.TemplateResponse("/auth/auth.html", {"request": request})
 
 
 @router.get("/catalog")
-def main_page(request: Request):
+def catalog_page(request: Request):
     return templates.TemplateResponse("/catalog_page/catalog_page.html", {"request": request})
 
 @router.get("/about")
-def main_page(request: Request):
+def about_page(request: Request):
     return templates.TemplateResponse("/about_page/about_page.html", {"request": request})
 
 
