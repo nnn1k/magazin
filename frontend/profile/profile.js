@@ -26,6 +26,7 @@ async function allBuyFromCart() {
     }
 }
 
+
 async function getMe() {
     const getResponse = await makeRequest({
         method: 'GET',

@@ -1020,20 +1020,7 @@
                             <th>Действия</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>#1001</td>
-                            <td><img src="https://via.placeholder.com/60" alt="Товар" class="product-image"></td>
-                            <td>Смартфон X10</td>
-                            <td>$599.99</td>
-                            <td>Смартфоны</td>
-                            <td>
-                                <div class="product-actions">
-                                    <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
-                                    <button class="action-btn delete-btn"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                    <tbody id="all-products">
                         <tr>
                             <td>#1002</td>
                             <td><img src="https://via.placeholder.com/60" alt="Товар" class="product-image"></td>
@@ -1125,6 +1112,43 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="add-product-modal_1">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Редактирование товара</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label for="product-name">Название товара</label>
+                    <input type="text" id="product-name_1" class="form-control" placeholder="Введите название">
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label for="product-price">Цена</label>
+                    <input type="number" id="product-price_1" class="form-control" placeholder="Введите цену">
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label for="product-category">Категория</label>
+                    <select id="product-category_1" class="form-control">
+                        <option value="">Выберите категорию</option>
+                        <option value="hoodies">Кофты</option>
+                        <option value="tshirts">Футболки</option>
+                        <option value="pants">Штаны</option>
+                        <option value="shoes">Обувь</option>
+                        <option value="outerwear">Верхняя одежда</option>
+                        <option value="accessories">Аксессуары</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label for="product-description">Описание</label>
+                    <textarea id="product-description_1" class="form-control" rows="3" placeholder="Введите описание товара"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="section-action" id="add-product-btn_1">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-container">
@@ -1199,6 +1223,7 @@
                 addProductModal.classList.remove('active');
             }
         });
+
     </script>
 <script type="module" src="/frontend/admin/admin.js"></script>
 </body>

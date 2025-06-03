@@ -1071,7 +1071,7 @@ footer {
     }
 
     .dashboard-cards {
-        grid-template-columns: 1fr;
+        grid-template-colum-ns: 1fr;
     }
 
     .account-stats {
