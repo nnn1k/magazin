@@ -40,6 +40,7 @@ def login_page(request: Request):
 def catalog_page(request: Request):
     return templates.TemplateResponse("/catalog_page/catalog_page.html", {"request": request})
 
+
 @router.get("/about")
 def about_page(request: Request):
     return templates.TemplateResponse("/about_page/about_page.html", {"request": request})
