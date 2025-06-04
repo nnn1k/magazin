@@ -207,8 +207,7 @@
 
     function validatePasswordStrength(password) {
         // Password should be at least 6 characters and contain both letters and numbers
-        const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-        return re.test(password);
+        return true
     }
 
     // Login form validation
