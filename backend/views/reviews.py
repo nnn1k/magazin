@@ -26,7 +26,6 @@ async def create_review(
 @router.get('/{review_id}')
 async def get_review(
         review_id: int,
-        user: UserSchema = Depends(get_no_auth_user_by_token),
         service: ReviewService = Depends(get_review_serv)
 ):
     reviews = await service.get_one(id=review_id)
@@ -35,7 +34,6 @@ async def get_review(
 
 @router.get('')
 async def get_all_review(
-        user: UserSchema = Depends(get_no_auth_user_by_token),
         service: ReviewService = Depends(get_review_serv)
 ):
     reviews = await service.get_all()
