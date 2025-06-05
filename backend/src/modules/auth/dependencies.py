@@ -29,8 +29,9 @@ async def get_user_by_token(
         refresh_token=Cookie(None, include_in_schema=False),
         response: Response = None,
         service: UserService = Depends(get_user_service),
+        auth: bool = Query(default=True, include_in_schema=False),
         is_admin: bool = Query(default=False, include_in_schema=False),
-) -> UserSchema:
+) -> UserSchema | None:
     user_id: int | None = None
     if access_token:
         try:
@@ -53,12 +54,31 @@ async def get_user_by_token(
 
         except ExpiredSignatureError:
             raise invalid_token_exc
+
     if not user_id:
-        raise invalid_token_exc
+        if auth:
+            raise invalid_token_exc
+        return None
+
     user = await service.get_user(id=int(user_id))
     if is_admin and not user.is_admin:
         raise user_is_not_admin_exc
     return user
+
+
+async def get_no_auth_user_by_token(
+        access_token=Cookie(None, include_in_schema=False),
+        refresh_token=Cookie(None, include_in_schema=False),
+        response: Response = None,
+        service: UserService = Depends(get_user_service)
+) -> UserSchema | None:
+    return await get_user_by_token(
+        auth=False,
+        access_token=access_token,
+        refresh_token=refresh_token,
+        service=service,
+        response=response
+    )
 
 
 async def get_admin_by_token(
@@ -66,9 +86,10 @@ async def get_admin_by_token(
         refresh_token=Cookie(None, include_in_schema=False),
         response: Response = None,
         service: UserService = Depends(get_user_service)
-):
+) -> UserSchema:
     return await get_user_by_token(
         is_admin=True,
+        auth=True,
         access_token=access_token,
         refresh_token=refresh_token,
         service=service,

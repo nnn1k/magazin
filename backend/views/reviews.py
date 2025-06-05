@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from backend.src.modules.auth.dependencies import get_user_by_token
+from backend.src.modules.auth.dependencies import get_user_by_token, get_no_auth_user_by_token
 from backend.src.modules.reviews.dependencies import get_review_serv
 from backend.src.modules.reviews.schemas import ReviewCreate
 from backend.src.modules.reviews.service import ReviewService
@@ -26,7 +26,7 @@ async def create_review(
 @router.get('/{review_id}')
 async def get_review(
         review_id: int,
-        user: UserSchema = Depends(get_user_by_token),
+        user: UserSchema = Depends(get_no_auth_user_by_token),
         service: ReviewService = Depends(get_review_serv)
 ):
     reviews = await service.get_one(id=review_id)
@@ -35,7 +35,7 @@ async def get_review(
 
 @router.get('')
 async def get_all_review(
-        user: UserSchema = Depends(get_user_by_token),
+        user: UserSchema = Depends(get_no_auth_user_by_token),
         service: ReviewService = Depends(get_review_serv)
 ):
     reviews = await service.get_all()
